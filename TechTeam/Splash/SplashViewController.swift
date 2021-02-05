@@ -23,6 +23,7 @@ class SplashViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         setupSplashView()
+//        startTransition()
     }
     
     private func setupSplashView() {
@@ -52,7 +53,8 @@ class SplashViewController: UIViewController {
 extension SplashViewController: SplashViewDelegate {
     
     func startTransition() {
-//        navigationController?.pushViewController(vc, animated: true)
+        let viewController = OnboardingCollectionViewController(pagesData: OnboardingPageData.pages)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
