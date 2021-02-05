@@ -165,6 +165,7 @@ class SplashView: BaseView, CAAnimationDelegate {
             }
             else if animationID == transitionAnimIdValue {
                 print("TRANSITION FINISHED")
+                layer.removeAllAnimations()
                 delegate?.startTransition()
             }
         }
