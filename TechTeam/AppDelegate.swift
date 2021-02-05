@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow()
         window?.makeKeyAndVisible()
-        window?.rootViewController = SplashViewController()
+        window?.rootViewController = UINavigationController(rootViewController: SplashViewController())
 
         return true
     }
