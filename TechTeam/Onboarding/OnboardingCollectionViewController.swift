@@ -95,6 +95,10 @@ class OnboardingCollectionViewController: UICollectionViewController, UICollecti
     
     private func handleExplore() {
         print("Explor Team")
+        let viewController = EmployeesViewController()
+        let navController = CustomNavigationController(rootViewController: viewController)
+        navController.modalPresentationStyle = .fullScreen
+        present(navController, animated: true)
     }
         
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
