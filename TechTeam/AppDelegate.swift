@@ -16,8 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow()
         window?.makeKeyAndVisible()
-        //        window?.rootViewController = UINavigationController(rootViewController: SplashViewController())
-
+//                window?.rootViewController = UINavigationController(rootViewController: SplashViewController())
+//        return true
+        
         let viewController = OnboardingCollectionViewController(pagesData: OnboardingPageData.pages)
         window?.rootViewController = UINavigationController(rootViewController: viewController)
         

@@ -1,11 +1,3 @@
-//
-//  CustomAnimationDismisser.swift
-//  InstagramFirebase
-//
-//  Created by Ivica Petrsoric on 08/02/2018.
-//  Copyright © 2018 Ivica Petrsoric. All rights reserved.
-//
-
 import UIKit
 
 class CustomAnimationDismisser: NSObject, UIViewControllerAnimatedTransitioning {

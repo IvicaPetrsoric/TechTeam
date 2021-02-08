@@ -8,6 +8,36 @@
 import UIKit
 import SwiftUI
 
+class ImageDownloader: ObservableObject {
+
+    @Published var downloadedData: UIImage = UIImage()
+    
+    func downloadImage(url: String) {
+        
+        print(url)
+        
+        guard let imageURL = URL(string: "https://teltech.co/images/members/\(url).jpg") else {
+            fatalError("ImageURL is incorrect")
+        }
+        
+        DispatchQueue.global().async {
+            let data = try! Data(contentsOf: imageURL)
+            print(data)
+            let image2: UIImage = UIImage(data: data)!
+            let width = image2.cgImage!.height
+
+            let image3: UIImage = EmployeeViewModel.cropToBounds(image: image2, width: width, height: width, offsetX: CGFloat(width))
+
+            
+            DispatchQueue.main.async {
+                self.downloadedData = image3
+            }
+        }
+    }
+    
+}
+
+
 struct EmployeeDetailsView: View {
     
     var dismiss: (() -> Void)?
@@ -17,7 +47,8 @@ struct EmployeeDetailsView: View {
     @State private var degrees: Double = 0
     @State private var flipped: Bool = false
     @State private var slideInTextSate: Bool = false
-
+    
+    
     var body: some View {
         ZStack {
             
@@ -103,13 +134,32 @@ struct UIKLabel: UIViewRepresentable {
 
 struct EmployeeDetailsFrontCard: View {
     
-    var employeeViewModel: EmployeeViewModel
+    var employeeViewModel: EmployeeViewModel {
+        didSet {
 
+        }
+    }
+    
+    
+    
+    init(employeeViewModel: EmployeeViewModel) {
+        self.employeeViewModel = employeeViewModel
+        self.imageDownloader.downloadImage(url: employeeViewModel.imageValue)
+
+    }
+    
+    @ObservedObject private var imageDownloader: ImageDownloader = ImageDownloader()
+
+    func fetchImage() {
+    }
     
     var body: some View {
+        
+        
+    
         VStack {
             HStack(alignment: .top) {
-                Image("ic_launch")
+                Image(uiImage: self.imageDownloader.downloadedData)
                     .resizable()
                     .frame(width: 75, height: 75)
                     .clipShape(Circle())
@@ -118,11 +168,11 @@ struct EmployeeDetailsFrontCard: View {
                 Spacer()
                 
                 VStack(alignment: .trailing) {
-                    Text("Developer")
+                    Text(employeeViewModel.nameValue)
                         .foregroundColor(Color.white)
                         .font(.system(size: 32))
                         .fontWeight(.bold)
-                    Text("")
+                    Text(employeeViewModel.surnameValue)
                         .foregroundColor(Color.white)
                         .font(.system(size: 18))
                         .fontWeight(.regular)
@@ -143,15 +193,15 @@ struct EmployeeDetailsFrontCard: View {
             Spacer()
 
             HStack {
-                VStack {
+                VStack(alignment: .center) {
                     Text("Intro")
                         .font(.headline)
                         .fontWeight(.bold)
                         .foregroundColor(Color.gray)
 
-                    Text("SVP of Operations")
+                    Text(employeeViewModel.introValue)
                         .font(.system(size: 20))
-                        .fontWeight(.bold)
+                        .fontWeight(.regular)
                         .foregroundColor(Color.white)
                 }
             }
@@ -165,7 +215,7 @@ struct EmployeeDetailsFrontCard: View {
                         .fontWeight(.bold)
                         .foregroundColor(Color.gray)
 
-                    Text("SVP of Operations")
+                    Text(employeeViewModel.titleValue)
                         .font(.caption)
                         .fontWeight(.bold)
                         .foregroundColor(Color.white)
@@ -178,7 +228,7 @@ struct EmployeeDetailsFrontCard: View {
                         .font(.caption)
                         .fontWeight(.bold)
                         .foregroundColor(Color.gray)
-                    Text("/")
+                    Text(employeeViewModel.agencyValue)
                         .font(.caption)
                         .fontWeight(.bold)
                         .foregroundColor(Color.white)
@@ -189,6 +239,9 @@ struct EmployeeDetailsFrontCard: View {
         .padding()
         .background(LinearGradient(gradient: Gradient(colors: [Color(.primaryColor), Color(.activeColor)]), startPoint: .topLeading, endPoint: .bottomTrailing))
         .cornerRadius(16)
+        .onAppear {
+            fetchImage()
+        }
     }
 }
 
@@ -219,7 +272,7 @@ struct EmployeeDetailsBackCard: View {
             Spacer()
             
             ScrollView (showsIndicators: false) {
-                Text("At my heart, I am a sausage maker, which means that I do the really fun stuff like driving process and execution. Jealous, right? Nothing geeks me out more than starting with a few ideas on a whiteboard and eventually shipping a polished product. I’ve been in mobile since way before it was even a thing; in fact, I built one of the world’s first mobile commerce applications. Though I grew up in NJ (Rutgers Strong!) I currently live on a small farm outside of Seattle, WA with my family and am a diehard supporter of local club and 2019 MLS Champions Seattle Sounders FC.rently live on a small farm outside of Seattle, WA with my family and am a diehard supporter of local club and 2019 MLS Champions Seattle Sounders FC.")
+                Text(employeeViewModel.descriptionValue)
                     .rotation3DEffect(
                         .degrees(180),
                         axis: (x: 0.0, y: 1.0, z: 0.0))
