@@ -7,13 +7,35 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 struct EmployeeListViewModel {
+    
+    private let selectedPhotoSubject = PublishSubject<Bool>()
+    var selectedPhoto: Observable<Bool> {
+        return selectedPhotoSubject.asObservable()
+    }
+    
+    var isLoadingData: Driver<Bool>?
+    let disposeBag = DisposeBag()
     
     private var employeesViewModel: [EmployeeViewModel]
     
     init(_ employees: [Employee]) {
         self.employeesViewModel = employees.compactMap(EmployeeViewModel.init)
+        
+
+        print("toster")
+//        sleep(2)
+//        selectedPhotoSubject.on(.next(true))
+        
+
+        if employees.count != 0 {
+//            isLoadingData?.
+            
+
+                
+        }
     }
     
     private func fetchData() {
@@ -22,6 +44,13 @@ struct EmployeeListViewModel {
     
     /// get number of sections
     func numberOfItemsInSection() -> Int {
+        if employeesViewModel.count > 0 {
+            print("FIRE")
+//            isLoadingData?.asObservable().ju
+//            isLoadingData?.asObservable().onNext(true)
+                selectedPhotoSubject.onNext(true)
+//            selectedPhotoSubject.on
+        }
         return employeesViewModel.count
     }
     
@@ -62,8 +91,6 @@ struct EmployeeViewModel {
         
         return Observable<NSAttributedString>.just(attributedText)
     }
-    
-    
     
 //    var imageUrl: Observable<UIImage> {
 //        let imageUrl = loadImage(fromURL: employee.image) { (image) in
