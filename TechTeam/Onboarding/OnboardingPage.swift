@@ -14,9 +14,9 @@ struct OnboardingPage {
     var description: String
 }
 
-struct OnboardingPageData {
+extension OnboardingPage {
     
-    static let pages: [OnboardingPage] = [
+    static let allPages: [OnboardingPage] = [
         .init(imageName: "ic_we_do",
               title: "What do we Do?",
               description: "We bring bright\nideas to life"),
@@ -33,5 +33,5 @@ struct OnboardingPageData {
               title: "Want to meet the Team?",
               description: "A highly motivated team who strives giving the end user what they want, even if they don't know it yet"),
     ]
-    
 }
+

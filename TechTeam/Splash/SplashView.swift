@@ -8,14 +8,13 @@
 import UIKit
 import RxSwift
 
-protocol SplashViewDelegate: class {
-    func startTransition()
-}
+class SplashView: BaseView {
 
-class SplashView: BaseView, CAAnimationDelegate {
-    
-    weak var delegate: SplashViewDelegate?
-        
+    private let startTransitionSubject = PublishSubject<Bool>()
+    var startTransitionOberver: Observable<Bool> {
+        return startTransitionSubject.asObservable()
+    }
+            
     private lazy var containerView: UIView = {
         let view = UIView()
         view.alpha = 0
@@ -106,7 +105,6 @@ class SplashView: BaseView, CAAnimationDelegate {
     private func setupCircularPulsingLayer() {
         circularPulsingLayer = createCircleShapeLayer(strokeColor: .primaryColorFaded, fillColor: .primaryColorFaded)
         containerView.layer.addSublayer(circularPulsingLayer)
-        
     }
     
     private func setupCircularStaticLayer() {
@@ -146,7 +144,7 @@ class SplashView: BaseView, CAAnimationDelegate {
         circularFillingLayer.add(animation, forKey: fillAnimId)
     }
     
-    private func animateTransitionLayer() {
+    func animateTransitionLayer() {
         let animData = BasicAnimData(keyPath: .transformScale, toValue: 100, duration: 2, fillMode: .forwards,
                                      autoreverses: false, isRemovedOnCompletion: false, repeatCount: 0,
                                      timingFunction: CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut),
@@ -157,19 +155,20 @@ class SplashView: BaseView, CAAnimationDelegate {
         circularTransitionLayer.add(animation, forKey: transitionAnimId)
     }
     
+}
+
+extension SplashView: CAAnimationDelegate {
+    
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if let animationID = anim.value(forKey: animIdKey) as? String {
             if animationID == strokeFillAnimIdValue {
-                print("FINISHED ANIATION")
                 animateTransitionLayer()
             }
             else if animationID == transitionAnimIdValue {
-                print("TRANSITION FINISHED")
                 layer.removeAllAnimations()
-                delegate?.startTransition()
+                startTransitionSubject.onCompleted()
             }
         }
     }
-
     
 }

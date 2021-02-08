@@ -16,10 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow()
         window?.makeKeyAndVisible()
-//                window?.rootViewController = UINavigationController(rootViewController: SplashViewController())
-//        return true
+        window?.rootViewController = UINavigationController(rootViewController: SplashViewController())
+        return true
         
-        let viewController = OnboardingCollectionViewController(pagesData: OnboardingPageData.pages)
+        let viewController = OnboardingCollectionViewController(pagesData: OnboardingPage.allPages)
         window?.rootViewController = UINavigationController(rootViewController: viewController)
         
         let viewController2 = EmployeesViewController()

@@ -138,9 +138,9 @@
 			children = (
 				6BE6695725CB36FB009BEF52 /* Info.plist */,
 				6BE6694925CB36F9009BEF52 /* AppDelegate.swift */,
-				6B41C09D25CDFF74002CB503 /* Employees */,
-				6BE6699D25CD493F009BEF52 /* Onboarding */,
 				6BE6699A25CD48A4009BEF52 /* Splash */,
+				6BE6699D25CD493F009BEF52 /* Onboarding */,
+				6B41C09D25CDFF74002CB503 /* Employees */,
 				6BE6697525CB4120009BEF52 /* Helpers */,
 				6BE6696B25CB3D7F009BEF52 /* Supporting Files */,
 			);

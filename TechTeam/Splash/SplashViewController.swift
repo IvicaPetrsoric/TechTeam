@@ -10,20 +10,29 @@ import RxSwift
 
 class SplashViewController: UIViewController {
 
-    private lazy var splashView: SplashView = {
-        let view = SplashView()
-        view.delegate = self
-        return view
-    }()
+    private lazy var splashView = SplashView()
+    
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .inactiveColor
         navigationController?.navigationBar.isHidden = true
-        
+                
+        setupNotificationObservers()
         setupSplashView()
-//        startTransition()
+        setupObservers()
+    }
+    
+    /// notifie if user leaves app, after re-entering make transition to next page
+    private func setupNotificationObservers(){
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNotificationEnteringForeground),
+                                               name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    
+    @objc private func handleNotificationEnteringForeground() {
+        splashView.animateTransitionLayer()
     }
     
     private func setupSplashView() {
@@ -31,31 +40,22 @@ class SplashViewController: UIViewController {
         splashView.anchorFillSuperview()
     }
     
-    
-    //    MARK:- TODO HANDLE BACKGROUND ANIMATIONS
-        
-    //    private func setupNotificationObservers(){
-    //        NotificationCenter.default.addObserver(self, selector: #selector(handleEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
-    //    }
-    //
-    //    // kada se ode u home da se aktivira ponovo anim
-    //    @objc private func handleEnterForeground(){
-    //        animatePuslingLayer()
-    //    }
-    //
-
-    deinit {
-        print("DEINIT SplashViewController")
+    private func setupObservers() {
+        splashView
+            .startTransitionOberver
+            .observe(on: MainScheduler.instance)
+            .subscribe(onCompleted: { [weak self] in
+                self?.startTransition()
+            })
+            .disposed(by: self.disposeBag)
     }
-       
-}
 
-extension SplashViewController: SplashViewDelegate {
-    
-    func startTransition() {
-        let viewController = OnboardingCollectionViewController(pagesData: OnboardingPageData.pages)
+    @objc private func startTransition() {
+        let viewController = OnboardingCollectionViewController(pagesData: OnboardingPage.allPages)
         navigationController?.pushViewController(viewController, animated: true)
     }
-    
+
 }
+
+
 
