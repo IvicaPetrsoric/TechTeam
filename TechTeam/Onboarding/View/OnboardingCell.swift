@@ -7,18 +7,33 @@
 
 import UIKit
 
-class OnboardingCell: BaseCollectionCell {
+class OnboardingPageCell: BaseCollectionCell {
+       
+    lazy var avatarImageView: UIImageView = {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "ic_launch"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = .primaryColor
+        return imageView
+    }()
     
-    var pageData: OnboardingPage? {
-        didSet {
-            guard let pageData = pageData else { return }
-            
-            let description = "\"\(pageData.description)\""
-            descriptionLabel.text = description
-            avatarImageView.image = UIImage(named: pageData.imageName)?.withRenderingMode(.alwaysTemplate)
-            titleLabel.text = pageData.title
-        }
-    }
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "TITLE"
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.textColor = .white
+        return label
+    }()
+    
+    lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "DESCRIPTION"
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = UIColor(white: 0.8, alpha: 1)
+        label.numberOfLines = 0
+        return label
+    }()
     
     private var containerView: UIView = {
         let view = UIView()
@@ -37,33 +52,6 @@ class OnboardingCell: BaseCollectionCell {
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.white.cgColor
         return view
-
-    }()
-    
-    private lazy var avatarImageView: UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "ic_launch"))
-        imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .primaryColor
-        return imageView
-    }()
-    
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "TITLE"
-        label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = .white
-        return label
-    }()
-    
-    private lazy var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "DESCRIPTION"
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = UIColor(white: 0.8, alpha: 1)
-        label.numberOfLines = 0
-        return label
     }()
     
     override func setupViews() {

@@ -1,8 +1,8 @@
 //
 //  VerticalStackView.swift
-//  LikeFlickr
+//  TechTeam
 //
-//  Created by Ivica Petrsoric on 15/01/2021.
+//  Created by Ivica Petrsoric on 08/02/2021.
 //
 
 import UIKit

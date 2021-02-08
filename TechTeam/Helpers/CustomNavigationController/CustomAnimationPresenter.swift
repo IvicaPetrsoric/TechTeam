@@ -1,20 +1,13 @@
+//
+//  CustomAnimationPresenter.swift
+//  TechTeam
+//
+//  Created by Ivica Petrsoric on 08/02/2021.
+//
+
 import UIKit
 
-//enum CustomAnimationTransitionType {
-//    case fromLeftToRight
-//    case fromRightToLeft
-//    case fromTopToBottom
-//    case fromBottopmToTop
-//}
-
 class CustomAnimationPresenter: NSObject, UIViewControllerAnimatedTransitioning {
-    
-//    private var transitionType: CustomAnimationTransitionType = .fromLeftToRight
-    
-//    init(transitionType: CustomAnimationTransitionType) {
-//        self.transitionType = transitionType
-//        super.init()
-//    }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.5
@@ -25,9 +18,7 @@ class CustomAnimationPresenter: NSObject, UIViewControllerAnimatedTransitioning 
         guard let fromView = transitionContext.view(forKey: .from) else { return }
         guard let toView = transitionContext.view(forKey: .to) else { return }
         
-        containerView.addSubview(toView)
-        
-        
+        containerView.addSubview(toView)       
         
         let starrtingFrame = CGRect(x: -toView.frame.width, y: 0, width: toView.frame.width, height: toView.frame.height)
         toView.frame = starrtingFrame
@@ -41,14 +32,5 @@ class CustomAnimationPresenter: NSObject, UIViewControllerAnimatedTransitioning 
             transitionContext.completeTransition(true)
         }
     }
-    
-//    private func getStartXPosition() -> CGFloat {
-//        switch transitionType {
-//        case .fromLeftToRight:
-//            return -toView.frame.width
-//        default:
-//            <#code#>
-//        }
-//    }
-    
+
 }

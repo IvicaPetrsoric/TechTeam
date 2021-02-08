@@ -23,13 +23,13 @@ class OnboardinPageControllerView: UIView {
     }()
     
     private lazy var pageControl: UIPageControl = {
-        let pc = UIPageControl()
-        pc.currentPage = 0
-        pc.numberOfPages = onboardingPageListViewModel.numberOfItemsInSection()
-        pc.currentPageIndicatorTintColor = .primaryColor
-        pc.pageIndicatorTintColor = .activeColor
-        pc.translatesAutoresizingMaskIntoConstraints = false
-        return pc
+        let pageController = UIPageControl()
+        pageController.currentPage = 0
+        pageController.numberOfPages = onboardingPageListViewModel.numberOfItemsInSection()
+        pageController.currentPageIndicatorTintColor = .primaryColor
+        pageController.pageIndicatorTintColor = .activeColor
+        pageController.translatesAutoresizingMaskIntoConstraints = false
+        return pageController
     }()
     
     lazy var nextButton: UIButton = {
@@ -63,15 +63,6 @@ class OnboardinPageControllerView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func animateExploreButton(show: Bool) {
-        let transform = show ? .identity : CGAffineTransform(translationX: 0, y: 200)
-
-        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-            self.eploreButton.transform = transform
-            self.eploreButton.alpha = show ? 1 : 0
-        })
     }
     
     private func setupViews() {
@@ -109,14 +100,21 @@ class OnboardinPageControllerView: UIView {
         } else if pageControl.currentPage == onboardingPageListViewModel.numberOfItemsInSection() - 1 {
             previousButton.isEnabled = true
             nextButton.isEnabled = false
-            
             animateExploreButton(show: true)
         } else {
             previousButton.isEnabled = true
             nextButton.isEnabled = true
-            
             animateExploreButton(show: false)
         }
+    }
+    
+    private func animateExploreButton(show: Bool) {
+        let transform = show ? .identity : CGAffineTransform(translationX: 0, y: 200)
+
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            self.eploreButton.transform = transform
+            self.eploreButton.alpha = show ? 1 : 0
+        })
     }
     
 }

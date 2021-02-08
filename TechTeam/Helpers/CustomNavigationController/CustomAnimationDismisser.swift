@@ -1,9 +1,14 @@
+//
+//  CustomAnimationDismisser.swift
+//  TechTeam
+//
+//  Created by Ivica Petrsoric on 08/02/2021.
+//
+
 import UIKit
 
 class CustomAnimationDismisser: NSObject, UIViewControllerAnimatedTransitioning {
     
-    
-
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.5
     }

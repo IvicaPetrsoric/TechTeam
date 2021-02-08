@@ -1,3 +1,10 @@
+//
+//  PrgoressIndicator.swift
+//  TechTeam
+//
+//  Created by Ivica Petrsoric on 08/02/2021.
+//
+
 import UIKit
 
 class PrgoressIndicator: BaseView {
