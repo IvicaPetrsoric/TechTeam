@@ -115,6 +115,22 @@
 			path = "Employee Details";
 			sourceTree = "<group>";
 		};
+		6B41C0F225D1DE41002CB503 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6BE6694D25CB36F9009BEF52 /* SplashViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6B41C0F325D1DE47002CB503 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6BE6698625CC2CB7009BEF52 /* SplashView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6BE6693D25CB36F9009BEF52 = {
 			isa = PBXGroup;
 			children = (
@@ -187,8 +203,8 @@
 		6BE6699A25CD48A4009BEF52 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				6BE6694D25CB36F9009BEF52 /* SplashViewController.swift */,
-				6BE6698625CC2CB7009BEF52 /* SplashView.swift */,
+				6B41C0F325D1DE47002CB503 /* View */,
+				6B41C0F225D1DE41002CB503 /* Controller */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
