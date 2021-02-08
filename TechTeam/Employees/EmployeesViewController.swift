@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SwiftUI
 
 class EmployeesViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -37,17 +38,51 @@ class EmployeesViewController: UICollectionViewController, UICollectionViewDeleg
     }
     
     private let cellId = "cellId"
+    private let headerCellId = "headerCellId"
+       
+    var progressIndicatorView = PrgoressIndicator()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.title = "Employees"
+        collectionView.bounces = true
 
         collectionView.backgroundColor = .backgroundColor
-        collectionView.register(EmployeeCell.self, forCellWithReuseIdentifier: cellId)
         
-        fetchData()
-    }
+        collectionView.register(EmployeeHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerCellId)
+        collectionView.register(EmployeeCell.self, forCellWithReuseIdentifier: cellId)
+       
+                view.addSubview(progressIndicatorView)
+                progressIndicatorView.anchorFillSuperview()
+
+        delay(2) {
+//            self.progressIndicatorView.animate(show: true)
+//            self.fetchData()
+        }
+//        fetchData()
+        
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+          refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        refreshControl.tintColor = UIColor.primaryColor
+        self.collectionView.refreshControl = refreshControl
+
+       }
+
+       @objc func refresh(_ sender: AnyObject) {
+        refreshControl.endRefreshing()
+        if employeeListViewModel.numberOfItemsInSection() == 0 {
+            self.progressIndicatorView.animate(show: true)
+            self.fetchData()
+        }
+
+          // Code to refresh table view
+       }
+    let refreshControl = UIRefreshControl()
+
+
+//    var refreshControl = UIRefreshControl()
     
     func fetchData() {
         if let url =  URL(string: "https://teltech.co/teltechiansFlat.json"){
@@ -57,9 +92,20 @@ class EmployeesViewController: UICollectionViewController, UICollectionViewDeleg
                 .retry(2)
                 .observe(on: MainScheduler.instance)
                 .subscribe(onNext: { response in
-//                    print(response)
                     let employees = response
+//                    return
                     self.employeeListViewModel = EmployeeListViewModel(employees)
+                    
+                    self.employeeListViewModel
+                        .selectedPhoto
+                        .observe(on: MainScheduler.instance)
+                        .subscribe(onNext: { value in
+                            print("TU SAM")
+                            if value {
+                                self.progressIndicatorView.animate(show: false)
+                            }
+                        })
+                        .disposed(by: self.disposeBag)
                     self.collectionView.reloadData()
                 }, onError: { (_) in
 //                    self.noticeView.animateView(show: true)
@@ -91,7 +137,11 @@ class EmployeesViewController: UICollectionViewController, UICollectionViewDeleg
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.item
+        let viewModel = employeeListViewModel.getEmployeeAt(index)
+        let hostingViewController = EmployeeDetailsViewHostingController(viewModel: viewModel)
+        hostingViewController.modalPresentationStyle = .overCurrentContext
 
+        present(hostingViewController, animated: true)
 
         print("Selected \(index)")
     }
@@ -108,7 +158,75 @@ class EmployeesViewController: UICollectionViewController, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 4
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCellId, for: indexPath)
+            return header
+        } else {
+            fatalError("Error with footer/header cell, on kind\(kind)")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let height = employeeListViewModel.numberOfItemsInSection() > 0 ? 0 : collectionView.frame.width * 1.5
+        return .init(width: collectionView.frame.width, height: height)
+    }
         
+}
+
+
+class EmployeeDetailsViewHostingController: UIHostingController<EmployeeDetailsView> {
+    
+    init(viewModel: EmployeeViewModel) {
+        super.init(rootView: EmployeeDetailsView(employeeViewModel: viewModel))
+        rootView.dismiss = dismiss
+        
+        view.backgroundColor = .clear
+        view.isOpaque = false
+    }
+    
+    @objc required dynamic init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func dismiss() {
+        rootView.dismiss = nil
+        dismiss(animated: true) {
+            self.removeFromParent()
+            self.view.removeFromSuperview()
+            
+        }
+    }
+}
+
+class EmployeeHeaderCell: BaseCollectionCell {
+    
+    lazy var avatarImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "ic_search")
+        imageView.tintColor = .primaryColor
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    private lazy var infoLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Welcome to Employees.\nIf no employees shown please drag down to activate fetch :)"
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = .boldSystemFont(ofSize: 16)
+        label.textColor = .white
+        return label
+    }()
+    
+    override func setupViews() {
+        addSubviews(avatarImageView, infoLabel)
+        
+        avatarImageView.anchorCenterSuperview(size: .init(width: 80, height: 80), constantY: -90)
+        infoLabel.anchorFillSuperview()
+    }
+    
 }
 
 class EmployeeCell: BaseCollectionCell {
@@ -121,15 +239,7 @@ class EmployeeCell: BaseCollectionCell {
             })
         }
     }
-    
-    var imageUrl: String? {
-        didSet {
-            if let imageUrl = imageUrl {
-                avatarImageView.loadImage(fromURL: imageUrl)
-            }
-        }
-    }
-        
+      
     private var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .activeColor

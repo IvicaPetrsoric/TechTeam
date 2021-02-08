@@ -7,21 +7,53 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
+import UIKit
 
 struct EmployeeListViewModel {
+    
+    private let selectedPhotoSubject = PublishSubject<Bool>()
+    var selectedPhoto: Observable<Bool> {
+        return selectedPhotoSubject.asObservable()
+    }
+    
+    var isLoadingData: Driver<Bool>?
+    let disposeBag = DisposeBag()
     
     private var employeesViewModel: [EmployeeViewModel]
     
     init(_ employees: [Employee]) {
         self.employeesViewModel = employees.compactMap(EmployeeViewModel.init)
+        
+
+        print("toster")
+//        sleep(2)
+//        selectedPhotoSubject.on(.next(true))
+        
+
+        if employees.count != 0 {
+//            isLoadingData?.
+            
+
+                
+        }
     }
     
     private func fetchData() {
-        
+        selectedPhotoSubject.onNext(true)
     }
     
     /// get number of sections
     func numberOfItemsInSection() -> Int {
+        if employeesViewModel.count > 0 {
+            print("FIRE")
+            selectedPhotoSubject.onNext(true)
+
+//            isLoadingData?.asObservable().ju
+//            isLoadingData?.asObservable().onNext(true)
+//                selectedPhotoSubject.onNext(true)
+//            selectedPhotoSubject.on
+        }
         return employeesViewModel.count
     }
     
@@ -39,6 +71,52 @@ struct EmployeeViewModel {
     init(_ employee: Employee) {
         self.employee = employee
     }
+    
+    var nameValue: String {
+        let name = employee.name
+        return name
+    }
+    
+    var surnameValue: String {
+        let surname = employee.surname
+        return surname
+    }
+           
+    var nameSurnameValue: String {
+        let name = employee.name
+        let surname = employee.surname
+        return "\(name) \(surname)"
+    }
+    
+    var introValue: String {
+        return employee.intro
+    }
+    
+    var titleValue: String {
+        return employee.title
+    }
+    
+    var agencyValue: String {
+        if let agency = employee.agency {
+            return agency.isEmpty ? "/" : "agency"
+        }
+        
+        return "/"
+    }
+    
+    var descriptionValue: String {
+        return employee.description
+    }
+    
+    var imageValue: String {
+        return employee.image
+    }
+    
+//    var imageValue: UIImage
+//    
+//    func getImage() -> UIImage {
+//        return imageValue
+//    }
     
     var title: Observable<NSAttributedString> {
         let name = employee.name
@@ -63,8 +141,6 @@ struct EmployeeViewModel {
         return Observable<NSAttributedString>.just(attributedText)
     }
     
-    
-    
 //    var imageUrl: Observable<UIImage> {
 //        let imageUrl = loadImage(fromURL: employee.image) { (image) in
 //            <#code#>
@@ -85,7 +161,8 @@ struct EmployeeViewModel {
         return Observable<UIImage?>.create { observer in
             self.loadImage(fromURL: "https://teltech.co/images/members/\(employee.image).jpg") { image in
                 let width = image.cgImage!.height
-                let image2: UIImage = self.cropToBounds(image: image, width: width, height: width)
+                let image2: UIImage = EmployeeViewModel.cropToBounds(image: image, width: width, height: width)
+//                self.imageValue = image2
                 observer.onNext(image2)
 //                observer.onNext(cropToBounds(image: image, width: image.cgImage.w, height: 200))
             }
@@ -97,10 +174,10 @@ struct EmployeeViewModel {
 
     }
     
-    func cropToBounds(image: UIImage, width: Int, height: Int) -> UIImage {
+    static func cropToBounds(image: UIImage, width: Int, height: Int, offsetX: CGFloat = 0) -> UIImage {
             let cgimage = image.cgImage!
             let contextImage: UIImage = UIImage(cgImage: cgimage)
-            var posX: CGFloat = 0.0
+            var posX: CGFloat = offsetX
             var posY: CGFloat = 0.0
             var cgwidth: CGFloat = CGFloat(width)
             var cgheight: CGFloat = CGFloat(height)

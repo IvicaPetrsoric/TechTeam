@@ -14,7 +14,7 @@ struct Employee: Decodable {
     var surname: String
     var image: String
     var title: String
-    var agency: String
+    var agency: String?
     var intro: String
     var description: String
 }
