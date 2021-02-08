@@ -10,7 +10,7 @@ import RxSwift
 
 struct OnboardingPageListViewModel {
     
-    private(set) var onboardingPagesViewModel: [OnboardingPageViewModel]
+    private var onboardingPagesViewModel: [OnboardingPageViewModel]
 
     init(_ pages: [OnboardingPage]) {
         self.onboardingPagesViewModel = pages.compactMap(OnboardingPageViewModel.init)

@@ -43,7 +43,7 @@ extension OnboardingCollectionViewController {
     }
     
     private func handleExplore() {
-        let viewController = EmployeesViewController()
+        let viewController = EmployeesCollectionViewController()
         let navController = CustomNavigationController(rootViewController: viewController)
         navController.modalPresentationStyle = .fullScreen
         present(navController, animated: true)

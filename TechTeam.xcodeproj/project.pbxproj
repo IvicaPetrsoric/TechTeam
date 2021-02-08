@@ -11,7 +11,7 @@
 		6B41C08F25CDCC16002CB503 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41C08E25CDCC16002CB503 /* OnboardingPage.swift */; };
 		6B41C09425CDFDB9002CB503 /* OnboardinPageControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41C09325CDFDB9002CB503 /* OnboardinPageControllerView.swift */; };
 		6B41C09B25CDFE9B002CB503 /* OnboardingPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41C09A25CDFE9B002CB503 /* OnboardingPageCell.swift */; };
-		6B41C09F25CDFF8E002CB503 /* EmployeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41C09E25CDFF8E002CB503 /* EmployeesViewController.swift */; };
+		6B41C09F25CDFF8E002CB503 /* EmployeesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41C09E25CDFF8E002CB503 /* EmployeesCollectionViewController.swift */; };
 		6B41C0BF25D02251002CB503 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41C0BE25D02251002CB503 /* CustomNavigationController.swift */; };
 		6B41C0C225D022CF002CB503 /* EmployeeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41C0C125D022CF002CB503 /* EmployeeListViewModel.swift */; };
 		6B41C0C625D022EC002CB503 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41C0C525D022EC002CB503 /* Employee.swift */; };
@@ -25,6 +25,11 @@
 		6BC7512125D1EB790040F6EE /* CustomAnimationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7512025D1EB790040F6EE /* CustomAnimationPresenter.swift */; };
 		6BC7512625D1EBD60040F6EE /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7512525D1EBD60040F6EE /* VerticalStackView.swift */; };
 		6BC7512B25D1EBF00040F6EE /* PrgoressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7512A25D1EBF00040F6EE /* PrgoressIndicator.swift */; };
+		6BC7513225D1F1C30040F6EE /* EmployeeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7513125D1F1C30040F6EE /* EmployeeHeaderCell.swift */; };
+		6BC7513625D1F1E20040F6EE /* EmployeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7513525D1F1E20040F6EE /* EmployeeCell.swift */; };
+		6BC7513925D1F23D0040F6EE /* EmployeeDetailsViewHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7513825D1F23D0040F6EE /* EmployeeDetailsViewHostingController.swift */; };
+		6BC7513E25D1F38F0040F6EE /* EmployeesCollectionViewController+HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7513D25D1F38F0040F6EE /* EmployeesCollectionViewController+HeaderCell.swift */; };
+		6BC7514425D2020C0040F6EE /* EmployeesCollectionViewController+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7514325D2020C0040F6EE /* EmployeesCollectionViewController+Collection.swift */; };
 		6BE6694A25CB36F9009BEF52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6694925CB36F9009BEF52 /* AppDelegate.swift */; };
 		6BE6694E25CB36F9009BEF52 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6694D25CB36F9009BEF52 /* SplashViewController.swift */; };
 		6BE6695625CB36FB009BEF52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BE6695425CB36FB009BEF52 /* LaunchScreen.storyboard */; };
@@ -48,7 +53,7 @@
 		6B41C08E25CDCC16002CB503 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		6B41C09325CDFDB9002CB503 /* OnboardinPageControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardinPageControllerView.swift; sourceTree = "<group>"; };
 		6B41C09A25CDFE9B002CB503 /* OnboardingPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageCell.swift; sourceTree = "<group>"; };
-		6B41C09E25CDFF8E002CB503 /* EmployeesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesViewController.swift; sourceTree = "<group>"; };
+		6B41C09E25CDFF8E002CB503 /* EmployeesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesCollectionViewController.swift; sourceTree = "<group>"; };
 		6B41C0BE25D02251002CB503 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		6B41C0C125D022CF002CB503 /* EmployeeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListViewModel.swift; sourceTree = "<group>"; };
 		6B41C0C525D022EC002CB503 /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
@@ -62,6 +67,11 @@
 		6BC7512025D1EB790040F6EE /* CustomAnimationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationPresenter.swift; sourceTree = "<group>"; };
 		6BC7512525D1EBD60040F6EE /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		6BC7512A25D1EBF00040F6EE /* PrgoressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrgoressIndicator.swift; sourceTree = "<group>"; };
+		6BC7513125D1F1C30040F6EE /* EmployeeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeHeaderCell.swift; sourceTree = "<group>"; };
+		6BC7513525D1F1E20040F6EE /* EmployeeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeCell.swift; sourceTree = "<group>"; };
+		6BC7513825D1F23D0040F6EE /* EmployeeDetailsViewHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetailsViewHostingController.swift; sourceTree = "<group>"; };
+		6BC7513D25D1F38F0040F6EE /* EmployeesCollectionViewController+HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmployeesCollectionViewController+HeaderCell.swift"; sourceTree = "<group>"; };
+		6BC7514325D2020C0040F6EE /* EmployeesCollectionViewController+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmployeesCollectionViewController+Collection.swift"; sourceTree = "<group>"; };
 		6BE6694625CB36F9009BEF52 /* TechTeam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechTeam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BE6694925CB36F9009BEF52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BE6694D25CB36F9009BEF52 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -102,10 +112,10 @@
 		6B41C09D25CDFF74002CB503 /* Employees */ = {
 			isa = PBXGroup;
 			children = (
-				6B41C0D625D09604002CB503 /* Employee Details */,
-				6B41C09E25CDFF8E002CB503 /* EmployeesViewController.swift */,
-				6B41C0C125D022CF002CB503 /* EmployeeListViewModel.swift */,
-				6B41C0C525D022EC002CB503 /* Employee.swift */,
+				6BC7514125D201A10040F6EE /* Model */,
+				6BC7513025D1F1A40040F6EE /* View */,
+				6BC7514025D2019B0040F6EE /* ViewModel */,
+				6BC7514225D201A90040F6EE /* Controller */,
 				6B41C0C825D02392002CB503 /* URLRequest+Rx.swift */,
 			);
 			path = Employees;
@@ -114,6 +124,7 @@
 		6B41C0D625D09604002CB503 /* Employee Details */ = {
 			isa = PBXGroup;
 			children = (
+				6BC7513825D1F23D0040F6EE /* EmployeeDetailsViewHostingController.swift */,
 				6B41C0D725D0961A002CB503 /* EmployeeDetailsView.swift */,
 			);
 			path = "Employee Details";
@@ -180,6 +191,41 @@
 			path = CustomNavigationController;
 			sourceTree = "<group>";
 		};
+		6BC7513025D1F1A40040F6EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6BC7513125D1F1C30040F6EE /* EmployeeHeaderCell.swift */,
+				6BC7513525D1F1E20040F6EE /* EmployeeCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6BC7514025D2019B0040F6EE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6B41C0C125D022CF002CB503 /* EmployeeListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6BC7514125D201A10040F6EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6B41C0C525D022EC002CB503 /* Employee.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6BC7514225D201A90040F6EE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6B41C09E25CDFF8E002CB503 /* EmployeesCollectionViewController.swift */,
+				6BC7514325D2020C0040F6EE /* EmployeesCollectionViewController+Collection.swift */,
+				6BC7513D25D1F38F0040F6EE /* EmployeesCollectionViewController+HeaderCell.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		6BE6693D25CB36F9009BEF52 = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +252,7 @@
 				6BE6699A25CD48A4009BEF52 /* Splash */,
 				6BE6699D25CD493F009BEF52 /* Onboarding */,
 				6B41C09D25CDFF74002CB503 /* Employees */,
+				6B41C0D625D09604002CB503 /* Employee Details */,
 				6BE6697525CB4120009BEF52 /* Helpers */,
 				6BE6696B25CB3D7F009BEF52 /* Supporting Files */,
 			);
@@ -389,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BC7512B25D1EBF00040F6EE /* PrgoressIndicator.swift in Sources */,
+				6BC7513925D1F23D0040F6EE /* EmployeeDetailsViewHostingController.swift in Sources */,
 				6BE669AD25CD83A9009BEF52 /* BaseCollectionCell.swift in Sources */,
 				6BC7511D25D1EB500040F6EE /* CustomAnimationDismisser.swift in Sources */,
 				6B41C08F25CDCC16002CB503 /* OnboardingPage.swift in Sources */,
@@ -397,6 +445,7 @@
 				6B41C0D825D0961A002CB503 /* EmployeeDetailsView.swift in Sources */,
 				6B41C09425CDFDB9002CB503 /* OnboardinPageControllerView.swift in Sources */,
 				6B41C0C225D022CF002CB503 /* EmployeeListViewModel.swift in Sources */,
+				6BC7513625D1F1E20040F6EE /* EmployeeCell.swift in Sources */,
 				6B41C08B25CDCB99002CB503 /* OnboardingPageListViewModel.swift in Sources */,
 				6BE6699225CC8D16009BEF52 /* CABasicAnimation.swift in Sources */,
 				6BE6697F25CC0425009BEF52 /* UIColor.swift in Sources */,
@@ -407,15 +456,18 @@
 				6BC7510325D1E5C50040F6EE /* OnboardingCollectionViewController+Collection.swift in Sources */,
 				6BE6698A25CC2CE5009BEF52 /* BaseView.swift in Sources */,
 				6B41C0CC25D04748002CB503 /* CircularImageView.swift in Sources */,
-				6B41C09F25CDFF8E002CB503 /* EmployeesViewController.swift in Sources */,
+				6B41C09F25CDFF8E002CB503 /* EmployeesCollectionViewController.swift in Sources */,
 				6BE6697925CB424A009BEF52 /* UIView+AutoLayout.swift in Sources */,
 				6B41C09B25CDFE9B002CB503 /* OnboardingPageCell.swift in Sources */,
 				6BE6699525CC8E9E009BEF52 /* CircularShapeLayer.swift in Sources */,
 				6BE6699F25CD4950009BEF52 /* OnboardingCollectionViewController.swift in Sources */,
+				6BC7513225D1F1C30040F6EE /* EmployeeHeaderCell.swift in Sources */,
 				6B41C0E625D189B8002CB503 /* Delay.swift in Sources */,
 				6B41C0BF25D02251002CB503 /* CustomNavigationController.swift in Sources */,
 				6BC7512125D1EB790040F6EE /* CustomAnimationPresenter.swift in Sources */,
+				6BC7514425D2020C0040F6EE /* EmployeesCollectionViewController+Collection.swift in Sources */,
 				6BE6694A25CB36F9009BEF52 /* AppDelegate.swift in Sources */,
+				6BC7513E25D1F38F0040F6EE /* EmployeesCollectionViewController+HeaderCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

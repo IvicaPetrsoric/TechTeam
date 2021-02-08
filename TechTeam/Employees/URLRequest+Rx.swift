@@ -25,14 +25,4 @@ extension URLRequest {
             }
     }
     
-//    static func loadImage(url: URL) -> Observable<UIImage?> {
-//        return Observable.just(url)
-//            .flatMap { url -> Observable<Data> in
-//                let request = URLRequest(url: url)
-//                return URLSession.shared.rx.data(request: request)
-//            }.map { data -> UIImage? in
-//                return UIImage(data: data)
-//            }
-//    }
-    
 }

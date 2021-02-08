@@ -11,9 +11,9 @@ import RxSwift
 
 final class OnboardingCollectionViewController: UICollectionViewController {
     
-    var onboardingPageListViewModel = OnboardingPageListViewModel([])
+    private(set) var onboardingPageListViewModel = OnboardingPageListViewModel([])
         
-    lazy var onboardinPageControllerView =
+    private(set) lazy var onboardinPageControllerView =
         OnboardinPageControllerView(viewModel: onboardingPageListViewModel)
        
     let cellId = "cellId"
