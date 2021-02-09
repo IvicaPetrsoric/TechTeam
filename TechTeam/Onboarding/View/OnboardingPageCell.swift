@@ -18,16 +18,15 @@ class OnboardingPageCell: BaseCollectionCell {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "TITLE"
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.numberOfLines = 0
         label.textColor = .white
         return label
     }()
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "DESCRIPTION"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = UIColor(white: 0.8, alpha: 1)

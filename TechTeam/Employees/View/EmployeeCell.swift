@@ -40,9 +40,7 @@ class EmployeeCell: BaseCollectionCell {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "TITLE\nTitle"
         label.numberOfLines = 0
-
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = .white
