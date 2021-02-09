@@ -8,7 +8,7 @@
 import Foundation
 
 /// enable printig loggin events
-let loggerDebugEnabled: Bool = false
+let loggerDebugEnabled: Bool = true
 
 
 struct UserProfileModel {
