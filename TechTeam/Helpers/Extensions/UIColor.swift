@@ -22,19 +22,3 @@ extension UIColor {
     static let primaryColorFaded = UIColor.rgb(r: 66, g: 26, b: 59)
 
 }
-
-
-
-
-////rgb(10, 14, 33)
-//background primaryColor: Color(0xFF0A0E21),
-//
-////rgb(29, 30, 51)
-//const kActiveCardColor = Color(0xFF1d1E33);
-//
-//
-////rgb(17, 19, 40)
-//const kInactiveCardColor = Color(0xFF111328);
-//
-//// rgb(235, 21, 85)
-//const kBottomContainerColor = Color(0xFFEB1555);

@@ -36,6 +36,8 @@ final class OnboardingCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
             
+        AnalyticsManager.shared.trackEvent(FeatureOneEvents.screen)
+        
         setupCollectionView()
         setupPageControllerView()
         setupOnboardingViewTapBindings()

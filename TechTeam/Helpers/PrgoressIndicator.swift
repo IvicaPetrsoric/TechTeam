@@ -9,13 +9,13 @@ import UIKit
 
 class PrgoressIndicator: BaseView {
     
-    let activityIndicator: UIActivityIndicatorView = {
+    private lazy var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)
         indicator.color = UIColor.primaryColor
         return indicator
     }()
     
-    let containerView: UIView = {
+    private lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .activeColor
         view.layer.cornerRadius = 12
