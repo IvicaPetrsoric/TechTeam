@@ -77,5 +77,103 @@ On the images it is shown how to fail and how to pass on the OnboardingViewModel
 <img src="images/testing0.png" widht= 250 height = 200  hspace="0"/> <img src="images/testing1.png" widht= 250 height = 200  hspace="0"/> 
 
 ## Service for event tracking
- 
+Inside the Service folder is Analytics folder which consist of files to logg events and send to specific Analyitcs SDK's. To create EventName navigate to Events.swift and add event name which you want to monitor. For this testing i decided to put screenVist and clickEvent.
+
+```swift
+enum EventName {
+    static let screenVisit = "Screen Visit"
+    static let clickEvent = "Click Event"
+}
+```
+
+For tracking specific features it is requred to open EventFeatures.swift. Here i defined one feature, entering onboarding screen and clicking to leave onboarding and start transition to employees screen. 
+
+```swift
+// FeatureOne
+enum FeatureOneEvents {
+    @Event(screenValue: "Onboarding")
+    static var screen: Event
+
+    @Event(clickValue: "FinishedWithOnboarindg")
+    static var buttonClick: Event
+}
+```
+
+For adding numerour Analytics SDK's and their setup we need to navigate to AnalyticsManager. For testing purpose i did setup Firebase class which would fire FirebaseAnalytics after fireing trackEvent()
+
+
+```swift
+// Firebase
+class FirebaseEventLogger: AnalyticsEventsLoggerProtocol {
+    var user: UserProfileModel?
+        
+    // set user properties
+    func setUserProperties(user: UserProfileModel) {
+        self.user = user
+        
+        if loggerDebugEnabled {
+            print("Setup: \(self)")
+        }
+    }
+    
+    // add implementation of tracking events
+    func trackEvent(event: EventProtocol) {
+        guard let user = user else { return }
+        
+        if loggerDebugEnabled {
+            print("\(self) with userID \(user.userID)")
+            print("Logg event \(event.name)")
+            print("Logg event parramts \(event.params)")
+            print("-----")
+        }
+    }
+}
+```
+
+For managing all SDK's setups and fireing events.
+
+```swift
+class AnalyticsManager {
+    
+    static let shared = AnalyticsManager()
+    
+    private var loggers: [AnalyticsEventsLoggerProtocol] = []
+
+    // Setup all the Analytics SDK's
+    func setUp() {
+        let user = UserProfileModel(userID: UUID().uuidString)
+        print("Analytic setup with userID \(user.userID)")
+
+        let firebaseEventLogger = FirebaseEventLogger()
+        firebaseEventLogger.setUserProperties(user: user)
+        
+        loggers.append(firebaseEventLogger)
+    }
+    
+    func trackEvent(_ event: EventProtocol, params: [String: Any] = [:]) {
+        loggers.forEach({ logger in
+            logger.trackEvent(event: event)
+        })
+    }
+}
+```
+
+For testing purpose, it is required to firstly init AnalyticsManager, the best situation would be at start of application. After that i did add event trigger on entering onboarding and leaveing onboarding screen. The event triggers can take extra parametars and can be empty.
+       
+
+```swift
+
+// AppDelegate 
+AnalyticsManager.shared.setUp()
+
+// Onboarding Screen viewDidLoad
+AnalyticsManager.shared.trackEvent(FeatureOneEvents.screen)
+
+// Onboarding Screen handle click on button and leaving screen
+AnalyticsManager.shared.trackEvent(FeatureOneEvents.buttonClick,
+                                  params:["extraKey": "extraValue"])
+```
+
+Logged events
+<img src="images/event_logger.png" widht= 150 height = 300  hspace="0"/> 
 
