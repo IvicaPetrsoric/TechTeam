@@ -16,6 +16,10 @@ struct EmployeeViewModel {
         self.employee = employee
     }
     
+    var departmentValue: String {
+        return employee.department?.uppercased() ?? "DEPARTMENT"
+    }
+    
     var nameValue: String {
         let name = employee.name ?? "Name"
         return name
@@ -24,6 +28,10 @@ struct EmployeeViewModel {
     var surnameValue: String {
         let surname = employee.surname ?? "Surname"
         return surname
+    }
+    
+    var nameSurnameValue: String {
+        return "\(nameValue) \(surnameValue)"
     }
               
     var introValue: String {

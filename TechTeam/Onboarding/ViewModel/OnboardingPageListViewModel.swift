@@ -30,8 +30,8 @@ struct OnboardingPageListViewModel {
 
 struct OnboardingPageViewModel {
     
-    private var page: OnboardingPage
-    
+    private(set) var page: OnboardingPage
+
     init(_ page: OnboardingPage) {
         self.page = page
     }

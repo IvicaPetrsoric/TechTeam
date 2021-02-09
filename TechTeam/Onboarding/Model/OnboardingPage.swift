@@ -16,6 +16,8 @@ struct OnboardingPage {
 
 extension OnboardingPage {
     
+    static let emptyPage: OnboardingPage = OnboardingPage(imageName: "", title: "", description: "")
+    
     static let allPages: [OnboardingPage] = [
         .init(imageName: "ic_who_are_we",
               title: "Who are we?",
