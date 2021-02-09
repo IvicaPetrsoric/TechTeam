@@ -13,7 +13,7 @@ class OnboardinPageControllerView: UIView {
     
     lazy var previousButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Prev", for: .normal)
+        button.setTitle(NSLocalizedString("PageControllerPrevButtontTetxt", comment: ""), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.setTitleColor(.primaryColor, for: .normal)
@@ -34,7 +34,7 @@ class OnboardinPageControllerView: UIView {
     
     lazy var nextButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Next", for: .normal)
+        button.setTitle(NSLocalizedString("PageControllerNextButtontTetxt", comment: ""), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.setTitleColor(.primaryColor, for: .normal)
@@ -44,7 +44,7 @@ class OnboardinPageControllerView: UIView {
     
     lazy var eploreButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Eplore", for: .normal)
+        button.setTitle(NSLocalizedString("PageControllerExploreButtontTetxt", comment: ""), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.setTitleColor(.white, for: .normal)

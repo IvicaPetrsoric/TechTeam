@@ -1,0 +1,39 @@
+// Splash
+"SplashTitleText" = "Tech\nTeam";
+
+// EmployeeDetails
+"EmployeeDetailsIntro" = "Intro";
+"EmployeeDetailsTitlo" = "Title";
+"EmployeeDetailsAgency" = "Agency";
+"EmployeeDetailsDescription" = "Description";
+
+// Employees
+"EmlpoyeesNagiationTitle" = "Employees";
+"EmployeePullRefreshTitle" = "Pull to refresh";
+"EmployeeHeaderText" = "Welcome to the Employee page.\nIf no Employees shown please pull down on the page!";
+
+// AlertController
+"AlertConnectionErrorText" = "Ooops, something went wrong, check your web connection and pull to refresh!";
+"AlertDialogTitle" = "Notice";
+"AlertOkButtonText" = "Ok";
+
+// Onboarding
+// PageController
+"PageControllerPrevButtontTetxt" = "Prev";
+"PageControllerNextButtontTetxt" = "Next";
+"PageControllerExploreButtontTetxt" = "Explore";
+// model
+"PageDataTitle_0" = "Who are we?";
+"PageDataDescription_0" = "Teltech is a New Jersey based communications company and a proud part of IAC. Headquartered just a short distance from New York City";
+"PageDataTitle_1" = "What do we do?";
+"PageDataDescription_1" = "We bring bright\nideas to life";
+"PageDataTitle_2" = "How we encourage success?";
+"PageDataDescription_2" = "We foster a unique and diverse Silicon Valley-like culture, where talented individuals can flourish";
+"PageDataTitle_3" = "What is our strength?";
+"PageDataDescription_3" = "Our deep wealth of experience in telecom and mobile allows us to execute fresh new ideas and opportunities that other companies wouldn't have the foresight to see";
+"PageDataTitle_4" = "Who makes our company?";
+"PageDataDescription_4" = "A highly motivated team who strives giving the end user what they want, even if they don't know it yet";
+
+
+                                         
+

@@ -31,8 +31,8 @@ class EmployeesCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.title = "Employees"
+
+        navigationItem.title = NSLocalizedString("EmlpoyeesNagiationTitle", comment: "")
         collectionView.backgroundColor = .backgroundColor
         
         registerHeaderCell()
@@ -51,7 +51,7 @@ class EmployeesCollectionViewController: UICollectionViewController {
     
     private func setupRefreshControl() {
         let attributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: attributes)
+        refreshControl.attributedTitle = NSAttributedString(string: NSLocalizedString("EmployeePullRefreshTitle", comment: ""), attributes: attributes)
         refreshControl.addTarget(self, action: #selector(handlePullToRefresh), for: .valueChanged)
         refreshControl.tintColor = UIColor.primaryColor
         collectionView.refreshControl = refreshControl

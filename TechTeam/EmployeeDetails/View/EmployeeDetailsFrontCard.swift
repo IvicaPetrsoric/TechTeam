@@ -50,10 +50,10 @@ struct EmployeeDetailsFrontCard: View {
             }
             
             Spacer()
-
+            
             HStack {
                 VStack(alignment: .center) {
-                    Text("Intro")
+                    Text(NSLocalizedString("EmployeeDetailsIntro", comment: ""))
                         .font(.headline)
                         .fontWeight(.bold)
                         .foregroundColor(Color.gray)
@@ -69,7 +69,7 @@ struct EmployeeDetailsFrontCard: View {
 
             HStack {
                 VStack(alignment: .leading) {
-                    Text("Title")
+                    Text(NSLocalizedString("EmployeeDetailsTitlo", comment: ""))
                         .font(.caption)
                         .fontWeight(.bold)
                         .foregroundColor(Color.gray)
@@ -83,7 +83,7 @@ struct EmployeeDetailsFrontCard: View {
                 Spacer()
 
                 VStack(alignment: .trailing) {
-                    Text("Agency")
+                    Text(NSLocalizedString("EmployeeDetailsAgency", comment: ""))
                         .font(.caption)
                         .fontWeight(.bold)
                         .foregroundColor(Color.gray)
