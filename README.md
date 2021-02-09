@@ -8,8 +8,9 @@ TechTeam is a simple iOS application for showing employees. The employees are fe
 After cloing the project it is required to run pod install and run .xcworkspace.
 
 # Tech stack
-- Swift 5 
-- Xcode 12
+- min iOS 13
+- Swift 5.3 
+- Xcode 12.3
 - MVVM+Rx
 - UIKit/SwiftUI
 - Pods:
@@ -50,5 +51,31 @@ This screen will show after selecting one of the employees. The transition is st
  <img src="images/details2.png" widht= 150 height = 300  hspace="0"/> <img src="images/details3.png" widht= 150 height = 300  hspace="0"/> 
  <img src="images/details0.png" widht= 150 height = 300  hspace="0"/>
 
+# Extra
+## Multilanguage support 
+This application supports english for its base language and croatian. The files for localization can be found inside supporting files, under localization folder. 
+Aftter selecting localizable.string, it will show the two supported files (en/hr). The files havekey/values. which keys are used throught the application inside NSLocalizedString. On the next images, some key/values are shown for localization. 
 
+ <img src="images/multilanguage0.png" widht= 150 height = 300  hspace="0"/> <img src="images/multilanguage1.png" widht= 175 height = 125  hspace="0"/> 
+ <img src="images/multilanguage2.png" widht= 175 height = 125  hspace="0"/> 
+ 
+### Testing multilanguage support
+For easy testing on simluator just edit the schema of current project (it can be found on the right side of stop button). Changeing the App language to croatina will automatically set while running next time on simulator to translate application to croatian. On the images it can be seen on the onboarding screens.
+
+<img src="images/multilanguage3.png" widht= 150 height = 300  hspace="0"/> <img src="images/onboarding0.png" widht= 150 height = 300  hspace="0"/> 
+<img src="images/multilanguage4.png" widht= 150 height = 300  hspace="0"/> 
+
+## Usage of SwiftUI
+While manly of the app was build with UIKit, the employees description screen is construced with usage of SwiftUI. For supporting this view it was required to pack it as rootViewController inside UIHostingController.
+
+<img src="images/details1.png" widht= 150 height = 300  hspace="0"/> 
+
+## Unit tests
+While this filed is still a bit new for me I did try it. In this testing i did test some base stuff of OnboardingViewModel and EmployeeViewModel.
+On the images it is shown how to fail and how to pass on the OnboardingViewModel testing. For instance, lets take function test_onboardingListViewModelCount, it is teesting if the init of ViewModel did go good. In this testing it should be 2 but for failing I did set 4.
+ 
+<img src="images/testing0.png" widht= 250 height = 200  hspace="0"/> <img src="images/testing1.png" widht= 250 height = 200  hspace="0"/> 
+
+## Service for event tracking
+ 
 
