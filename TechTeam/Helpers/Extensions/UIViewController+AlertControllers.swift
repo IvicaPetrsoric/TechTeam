@@ -9,14 +9,26 @@ import UIKit
 
 extension UIViewController {
     
-    enum AlertMessage: String{
-        case errorConnection = "Ooops, something went wrong, check your web connection and pull to refresh!"
+    enum AlertMessage {
+        case errorConnection
+        
+        func value() -> String {
+            switch self {
+            case .errorConnection:
+                return NSLocalizedString("AlertConnectionErrorText", comment: "")
+            }
+        }
     }
     
     func showAllert(message: AlertMessage){
-        let alert = UIAlertController(title: "Notice", message: message.rawValue, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        let alert = UIAlertController(title: NSLocalizedString("AlertDialogTitle", comment: ""),
+                                      message: message.value(),
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("AlertOkButtonText", comment: ""),
+                                      style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
 }
+
+

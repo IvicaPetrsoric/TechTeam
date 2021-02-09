@@ -20,8 +20,8 @@ struct EmployeeDetailsBackCard: View {
                 Spacer()
 
                 VStack(alignment: .leading) {
-                    Text("Descrption")
-                        .foregroundColor(Color.white)
+                    Text(NSLocalizedString("EmployeeDetailsDescription", comment: ""))
+                        .foregroundColor(Color.gray)
                         .font(.system(size: 32))
                         .fontWeight(.bold)
                         .rotation3DEffect(.degrees(180),axis: (x: 0.0, y: 1.0, z: 0.0))

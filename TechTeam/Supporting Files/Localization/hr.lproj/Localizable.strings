@@ -1,0 +1,39 @@
+// Splash
+"SplashTitleText" = "Tech\nTim";
+
+// EmployeeDetails
+"EmployeeDetailsIntro" = "Kratki opis";
+"EmployeeDetailsTitlo" = "Titula";
+"EmployeeDetailsAgency" = "Agencija";
+"EmployeeDetailsDescription" = "Opis";
+
+// Employees
+"EmlpoyeesNagiationTitle" = "Zaposlenici";
+"EmployeePullRefreshTitle" = "Povucite za osvježavanje";
+"EmployeeHeaderText" = "Dobrodošli na stranicu Zaposlenika.\nAko se ne prikazuju zaposlenici, povucite za osvježavanje!";
+
+// AlertController
+"AlertConnectionErrorText" = "Ups, nešto je pošlo po zlu, provjerite svoju web vezu i povucite za osvježavanje!";
+"AlertDialogTitle" = "Obavijest";
+"AlertOkButtonText" = "Ok";
+
+// Onboarding
+// PageController
+"PageControllerPrevButtontTetxt" = "Pret";
+"PageControllerNextButtontTetxt" = "Sljed";
+"PageControllerExploreButtontTetxt" = "Istraži";
+// model
+"PageDataTitle_0" = "Tko smo mi?";
+"PageDataDescription_0" = "Teltech je komunikacijska tvrtka sa sjedištem u New Jerseyju i ponosni dio IAC-a. Sa sjedištem na maloj udaljenosti od New Yorka";
+"PageDataTitle_1" = "Šta radimo?";
+"PageDataDescription_1" = "Sjajne ideje pretvaramo u realnost";
+"PageDataTitle_2" = "Kako potičemo uspjeh?";
+"PageDataDescription_2" = "Njegujemo jedinstvenu i raznoliku kulturu nalik Silicijskoj dolini, u kojoj nadareni pojedinci mogu cvjetati";
+"PageDataTitle_3" = "Koja je naša snaga?";
+"PageDataDescription_3" = "Naše bogato bogatstvo iskustva u telekomu i mobilnim uređajima omogućuje nam izvršavanje novih ideja i prilika koje druge tvrtke ne bi imale predviđanja da vide";
+"PageDataTitle_4" = "Tko čini našu tvrtku?";
+"PageDataDescription_4" = "Visoko motivirani tim koji se trudi krajnjem korisniku pružiti ono što želi, čak i ako to još ne zna";
+
+
+                                         
+

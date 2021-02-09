@@ -20,10 +20,10 @@ class SplashView: BaseView {
         view.alpha = 0
         return view
     }()
-    
+        
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Tech\nTeam"
+        label.text = NSLocalizedString("SplashTitleText", comment: "")
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 44)
         label.textColor = .white
