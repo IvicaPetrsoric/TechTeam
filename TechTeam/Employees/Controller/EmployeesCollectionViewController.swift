@@ -39,6 +39,9 @@ class EmployeesCollectionViewController: UICollectionViewController {
         registerCell()
         setupProgressIndicatorView()
         setupRefreshControl()
+        
+        employeeListViewModel.fetchData()
+        setupBindings()
    }
     
     private func setupProgressIndicatorView() {
@@ -49,46 +52,47 @@ class EmployeesCollectionViewController: UICollectionViewController {
     private func setupRefreshControl() {
         let attributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: attributes)
-        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(handlePullToRefresh), for: .valueChanged)
         refreshControl.tintColor = UIColor.primaryColor
         collectionView.refreshControl = refreshControl
     }
 
-    @objc func refresh(_ sender: AnyObject) {
+    @objc private func handlePullToRefresh() {
         refreshControl.endRefreshing()
-        if employeeListViewModel.numberOfItemsInSection() == 0 {
-            self.progressIndicatorView.animate(show: true)
-            self.fetchData()
+      
+        if employeeListViewModel.reloadDataAvailable {
+            progressIndicatorView.animate(show: true)
+            employeeListViewModel.fetchData()
         }
     }
+    
+    private func setupBindings() {
+        employeeListViewModel
+            .finishedFetching
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                if value {
+                    self?.progressIndicatorView.animate(show: false)
+                    self?.collectionView.reloadData()
+                }
+            })
+            .disposed(by: self.disposeBag)
+        
+        employeeListViewModel
+            .errorOnFetchData
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (error) in
+                self?.progressIndicatorView.animate(show: false)
 
-    func fetchData() {
-        if let url =  URL(string: "https://teltech.co/teltechiansFlat.json"){
-            let resource = Resource<[Employee]>(url: url)
-            
-            URLRequest.load(resource: resource)
-                .retry(2)
-                .observe(on: MainScheduler.instance)
-                .subscribe(onNext: { response in
-                    let employees = response
-//                    return
-                    self.employeeListViewModel = EmployeeListViewModel(employees)
-                    
-                    self.employeeListViewModel
-                        .selectedPhoto
-                        .observe(on: MainScheduler.instance)
-                        .subscribe(onNext: { value in
-                            print("TU SAM")
-                            if value {
-                                self.progressIndicatorView.animate(show: false)
-                            }
-                        })
-                        .disposed(by: self.disposeBag)
-                    self.collectionView.reloadData()
-                }, onError: { (_) in
-//                    self.noticeView.animateView(show: true)
-                }).disposed(by: disposeBag)
-        }
+                switch error {
+                case .connectionError:
+                    self?.showAllert(message: .errorConnection)
+                default:
+                    //TODO:- implement switch for handling other errors
+                    self?.showAllert(message: .errorConnection)
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
 }

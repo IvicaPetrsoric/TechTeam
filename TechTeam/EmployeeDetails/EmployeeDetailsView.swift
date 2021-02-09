@@ -26,7 +26,7 @@ class ImageDownloader: ObservableObject {
             let image2: UIImage = UIImage(data: data)!
             let width = image2.cgImage!.height
 
-            let image3: UIImage = EmployeeViewModel.cropToBounds(image: image2, width: width, height: width, offsetX: CGFloat(width))
+            let image3: UIImage = image2.cropToBounds(image: image2, width: width, height: width, offsetX: CGFloat(width))
 
             
             DispatchQueue.main.async {

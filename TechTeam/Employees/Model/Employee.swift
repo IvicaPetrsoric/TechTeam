@@ -9,13 +9,13 @@ import Foundation
 
 struct Employee: Decodable {
     
-    var department: String
-    var name: String
-    var surname: String
-    var image: String
-    var title: String
+    var department: String?
+    var name: String?
+    var surname: String?
+    var image: String?
+    var title: String?
     var agency: String?
-    var intro: String
-    var description: String
+    var intro: String?
+    var description: String?
 }
 
