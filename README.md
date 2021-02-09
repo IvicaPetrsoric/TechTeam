@@ -177,6 +177,6 @@ AnalyticsManager.shared.trackEvent(FeatureOneEvents.buttonClick,
 # Logged events
 On the next image the logged events are shown. From init to trigger events.
 <img src="images/event_logger0.png" widht= 150 height = 300  hspace="0"/> 
-<img src="images/multilanguage3.png" widht= 150 height = 300  hspace="0"/> <img src="images/onboarding0.png" widht= 150 height = 300  hspace="0"/> 
+<img src="images/event.png" widht= 150 height = 300  hspace="0"/> <img src="images/event.jpg" widht= 150 height = 300  hspace="0"/> 
 <img src="images/event_logger0.png" widht= 150 height = 300  hspace="0"/> 
 
