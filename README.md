@@ -43,7 +43,12 @@ After pressing button on onboarding to explore employees list, another screen wi
  <img src="images/employee1.png" widht= 150 height = 300  hspace="0"/> <img src="images/employee2.png" widht= 150 height = 300  hspace="0"/>
  <img src="images/employee4.png" widht= 150 height = 300  hspace="0"/>
 
+## Employee Details Screen
+This screen will show after selecting one of the employees. The transition is starting from top to bottom with spring effect. After is settles down the user can read more about of the employee with data presented on a card. To se more description about the user, a click is required on the card. When tapping, a rotating animation will be trigered and the back side of the card will be shown. To remove the card from screen it is requreid to tap outside of the card. The transition to employees screen will reverse the entering nimation of the card.
 
+ <img src="images/details00.png" widht= 150 height = 300  hspace="0"/> <img src="images/details0.png" widht= 150 height = 300  hspace="0"/> 
+ <img src="images/details1.png" widht= 150 height = 300  hspace="0"/> <img src="images/details2.png" widht= 150 height = 300  hspace="0"/> 
+ <img src="images/details3.png" widht= 150 height = 300  hspace="0"/>
 
 
 
