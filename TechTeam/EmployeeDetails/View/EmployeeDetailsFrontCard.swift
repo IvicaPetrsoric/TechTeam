@@ -30,11 +30,11 @@ struct EmployeeDetailsFrontCard: View {
                 Spacer()
                 
                 VStack(alignment: .trailing) {
-                    Text(employeeViewModel.nameValue)
+                    Text(employeeViewModel.departmentValue)
                         .foregroundColor(Color.white)
-                        .font(.system(size: 32))
+                        .font(.system(size: 18))
                         .fontWeight(.bold)
-                    Text(employeeViewModel.surnameValue)
+                    Text(employeeViewModel.nameSurnameValue)
                         .foregroundColor(Color.white)
                         .font(.system(size: 18))
                         .fontWeight(.regular)
