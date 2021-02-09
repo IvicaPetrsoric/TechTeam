@@ -14,7 +14,7 @@ extension OnboardingCollectionViewController {
         
         onboardinPageControllerView.anchor(top: nil, leading: view.leadingAnchor,
                                            bottom: view.safeBottomAnchor, trailing: view.trailingAnchor,
-                                           padding: .init(top: 0, left: 4, bottom: 66, right: 4),
+                                           padding: .init(top: 0, left: 4, bottom: 44, right: 4),
                                            size: .init(width: 0, height: 50))
     }
     
