@@ -16,19 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow()
         window?.makeKeyAndVisible()
-//        window?.rootViewController = UINavigationController(rootViewController: SplashViewController())
-//        return true
-        
-        let viewController = OnboardingCollectionViewController(pagesData: OnboardingPage.allPages)
-        window?.rootViewController = UINavigationController(rootViewController: viewController)
-        
-        let viewController2 = EmployeesCollectionViewController()
-        let navController = CustomNavigationController(rootViewController: viewController2)
-        navController.modalPresentationStyle = .fullScreen
-        viewController.present(navController, animated: true)
+        window?.rootViewController = UINavigationController(rootViewController: SplashViewController())
         return true
     }
-
 
 }
 

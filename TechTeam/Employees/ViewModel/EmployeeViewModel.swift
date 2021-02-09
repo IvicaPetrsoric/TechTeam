@@ -83,7 +83,8 @@ struct EmployeeViewModel {
                 } else {
                     observer.onNext(UIImage(named: "ic_launch"))
                }
-           }
+            }
+            
             return Disposables.create()
         }
     }

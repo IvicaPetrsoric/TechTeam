@@ -32,6 +32,10 @@
 		6BC7514C25D21FF40040F6EE /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7514B25D21FF40040F6EE /* APIManager.swift */; };
 		6BC7514F25D2205E0040F6EE /* UIImage+Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7514E25D2205E0040F6EE /* UIImage+Crop.swift */; };
 		6BC7515325D222BA0040F6EE /* EmployeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7515225D222BA0040F6EE /* EmployeeViewModel.swift */; };
+		6BC7515D25D225090040F6EE /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7515C25D225090040F6EE /* ImageDownloader.swift */; };
+		6BC7516125D225540040F6EE /* EmployeeDetailsFrontCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7516025D225540040F6EE /* EmployeeDetailsFrontCard.swift */; };
+		6BC7516425D225700040F6EE /* EmployeeDetailsBackCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7516325D225700040F6EE /* EmployeeDetailsBackCard.swift */; };
+		6BC7516725D225C80040F6EE /* EmployeeDetialsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7516625D225C80040F6EE /* EmployeeDetialsCard.swift */; };
 		6BE6694A25CB36F9009BEF52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6694925CB36F9009BEF52 /* AppDelegate.swift */; };
 		6BE6694E25CB36F9009BEF52 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6694D25CB36F9009BEF52 /* SplashViewController.swift */; };
 		6BE6695625CB36FB009BEF52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BE6695425CB36FB009BEF52 /* LaunchScreen.storyboard */; };
@@ -76,6 +80,10 @@
 		6BC7514B25D21FF40040F6EE /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		6BC7514E25D2205E0040F6EE /* UIImage+Crop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Crop.swift"; sourceTree = "<group>"; };
 		6BC7515225D222BA0040F6EE /* EmployeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewModel.swift; sourceTree = "<group>"; };
+		6BC7515C25D225090040F6EE /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		6BC7516025D225540040F6EE /* EmployeeDetailsFrontCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetailsFrontCard.swift; sourceTree = "<group>"; };
+		6BC7516325D225700040F6EE /* EmployeeDetailsBackCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetailsBackCard.swift; sourceTree = "<group>"; };
+		6BC7516625D225C80040F6EE /* EmployeeDetialsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetialsCard.swift; sourceTree = "<group>"; };
 		6BE6694625CB36F9009BEF52 /* TechTeam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechTeam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BE6694925CB36F9009BEF52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BE6694D25CB36F9009BEF52 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -127,8 +135,9 @@
 		6B41C0D625D09604002CB503 /* EmployeeDetails */ = {
 			isa = PBXGroup;
 			children = (
-				6BC7513825D1F23D0040F6EE /* EmployeeDetailsViewHostingController.swift */,
-				6B41C0D725D0961A002CB503 /* EmployeeDetailsView.swift */,
+				6BC7515925D223C00040F6EE /* View */,
+				6BC7515A25D223C50040F6EE /* ViewModel */,
+				6BC7515825D223B10040F6EE /* Controller */,
 			);
 			path = EmployeeDetails;
 			sourceTree = "<group>";
@@ -238,6 +247,33 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		6BC7515825D223B10040F6EE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6BC7513825D1F23D0040F6EE /* EmployeeDetailsViewHostingController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6BC7515925D223C00040F6EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6B41C0D725D0961A002CB503 /* EmployeeDetailsView.swift */,
+				6BC7516625D225C80040F6EE /* EmployeeDetialsCard.swift */,
+				6BC7516025D225540040F6EE /* EmployeeDetailsFrontCard.swift */,
+				6BC7516325D225700040F6EE /* EmployeeDetailsBackCard.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6BC7515A25D223C50040F6EE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6BC7515C25D225090040F6EE /* ImageDownloader.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		6BE6693D25CB36F9009BEF52 = {
 			isa = PBXGroup;
 			children = (
@@ -284,7 +320,6 @@
 		6BE6697525CB4120009BEF52 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				6BC7514E25D2205E0040F6EE /* UIImage+Crop.swift */,
 				6B41C0E525D189B8002CB503 /* Delay.swift */,
 				6BC7512A25D1EBF00040F6EE /* PrgoressIndicator.swift */,
 				6BE6698925CC2CE5009BEF52 /* BaseView.swift */,
@@ -299,6 +334,7 @@
 		6BE6697625CB4125009BEF52 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				6BC7514E25D2205E0040F6EE /* UIImage+Crop.swift */,
 				6BE6697825CB424A009BEF52 /* UIView+AutoLayout.swift */,
 				6BE6697E25CC0425009BEF52 /* UIColor.swift */,
 				6BE6699125CC8D16009BEF52 /* CABasicAnimation.swift */,
@@ -472,6 +508,8 @@
 				6BC7510325D1E5C50040F6EE /* OnboardingCollectionViewController+Collection.swift in Sources */,
 				6BC7515325D222BA0040F6EE /* EmployeeViewModel.swift in Sources */,
 				6BE6698A25CC2CE5009BEF52 /* BaseView.swift in Sources */,
+				6BC7516425D225700040F6EE /* EmployeeDetailsBackCard.swift in Sources */,
+				6BC7516125D225540040F6EE /* EmployeeDetailsFrontCard.swift in Sources */,
 				6B41C09F25CDFF8E002CB503 /* EmployeesCollectionViewController.swift in Sources */,
 				6BE6697925CB424A009BEF52 /* UIView+AutoLayout.swift in Sources */,
 				6B41C09B25CDFE9B002CB503 /* OnboardingPageCell.swift in Sources */,
@@ -482,7 +520,9 @@
 				6B41C0BF25D02251002CB503 /* CustomNavigationController.swift in Sources */,
 				6BC7512125D1EB790040F6EE /* CustomAnimationPresenter.swift in Sources */,
 				6BC7514425D2020C0040F6EE /* EmployeesCollectionViewController+Collection.swift in Sources */,
+				6BC7516725D225C80040F6EE /* EmployeeDetialsCard.swift in Sources */,
 				6BE6694A25CB36F9009BEF52 /* AppDelegate.swift in Sources */,
+				6BC7515D25D225090040F6EE /* ImageDownloader.swift in Sources */,
 				6BC7513E25D1F38F0040F6EE /* EmployeesCollectionViewController+HeaderCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
