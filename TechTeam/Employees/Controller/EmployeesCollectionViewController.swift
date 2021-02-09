@@ -67,6 +67,7 @@ class EmployeesCollectionViewController: UICollectionViewController {
         }
     }
     
+    /// binds to VM, and subscribes when to show aler dialog because error  or reload collection view 
     private func setupBindings() {
         employeeListViewModel
             .finishedFetching

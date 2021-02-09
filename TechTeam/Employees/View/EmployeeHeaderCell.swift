@@ -19,8 +19,7 @@ class EmployeeHeaderCell: BaseCollectionCell {
     
     private lazy var infoLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("Welcome to the Employee page.\nIf no Employees shown please pull down on the page!",
-                                       comment: "")
+        label.text = NSLocalizedString("EmployeeHeaderText", comment: "")
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = .boldSystemFont(ofSize: 16)

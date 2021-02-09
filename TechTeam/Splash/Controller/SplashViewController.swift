@@ -40,6 +40,7 @@ class SplashViewController: UIViewController {
         splashView.anchorFillSuperview()
     }
     
+    /// observe when to transit to next screen
     private func setupObservers() {
         splashView
             .startTransitionOberver

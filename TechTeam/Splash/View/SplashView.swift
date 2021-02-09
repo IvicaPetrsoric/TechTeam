@@ -33,6 +33,7 @@ class SplashView: BaseView {
     
     private lazy var splashImageView = UIImageView(image: #imageLiteral(resourceName: "ic_launch"))
     
+    /// animated layers
     private var circularPulsingLayer = CAShapeLayer()
     private var circulatStaticLayer = CAShapeLayer()
     private var circularFillingLayer = CAShapeLayer()

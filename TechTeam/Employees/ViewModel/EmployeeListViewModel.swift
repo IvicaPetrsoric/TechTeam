@@ -28,6 +28,7 @@ class EmployeeListViewModel {
         self.employeesViewModel = employees.compactMap(EmployeeViewModel.init)
     }
 
+    /// fetch data and trigger subscribers for provided data/error
     func fetchData() {
         isLoadingData = true
             
@@ -56,7 +57,7 @@ class EmployeeListViewModel {
         return employeesViewModel.count
     }
     
-    /// page at specific index
+    /// employee at specific index
     func getEmployeeAt(_ index: Int) -> EmployeeViewModel {
         return employeesViewModel[index]
     }

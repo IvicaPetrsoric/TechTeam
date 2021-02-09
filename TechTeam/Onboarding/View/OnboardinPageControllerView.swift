@@ -88,11 +88,13 @@ class OnboardinPageControllerView: UIView {
         animateExploreButton(show: false)
     }
     
+    /// set new position to page controller
     func updateControllerPosition(index: Int) {
         pageControl.currentPage = index
         updateViews()
     }
     
+    /// update if prev/next button is available, if on last card show button for transition
     private func updateViews() {
         if pageControl.currentPage == 0 {
             previousButton.isEnabled = false
@@ -108,6 +110,7 @@ class OnboardinPageControllerView: UIView {
         }
     }
     
+    /// shows/hide explore button from the screen
     private func animateExploreButton(show: Bool) {
         let transform = show ? .identity : CGAffineTransform(translationX: 0, y: 200)
 

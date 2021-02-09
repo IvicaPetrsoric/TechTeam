@@ -16,16 +16,19 @@ class APIManager {
     
     static let baseUrl = "https://teltech.co"
     
+    // return resutl
     enum ApiResult<T> {
         case success(T)
         case failure(RequestError)
     }
     
+    /// endpoints
     enum EndpointType {
         case getBaseDescription
         case getImage
     }
     
+    /// errors
     enum RequestError {
         case invalidURL
         case unknownError
@@ -38,6 +41,7 @@ class APIManager {
         case serverUnavailable
     }
 
+    /// prepare rosurce for specific endpoint
     static private func getResource(type: EndpointType, imageName: String = "") -> Resource{
         switch type {
 
@@ -49,7 +53,9 @@ class APIManager {
         }
     }
     
-    static func requestData<T: Decodable>(endpointType: EndpointType, decodeType: T.Type, completion: @escaping (ApiResult<T>)->Void) {
+    /// fetch data from specific endpoint, if error return error enum
+    static func requestData<T: Decodable>(endpointType: EndpointType, decodeType: T.Type,
+                                          completion: @escaping (ApiResult<T>) -> Void) {
         let resource = APIManager.getResource(type: endpointType)
         guard let url = URL(string: resource.url) else { return completion(ApiResult.failure(.invalidURL)) }
         let request = URLRequest(url: url, timeoutInterval: 15)
@@ -83,6 +89,7 @@ class APIManager {
         }.resume()
     }
 
+    /// load image from endpoint and save it inside shared cache 
     static func loadImage(endpointType: EndpointType, imageName: String, completiong: @escaping((UIImage?) -> Void)) {
         let resource = APIManager.getResource(type: endpointType, imageName: imageName)
 

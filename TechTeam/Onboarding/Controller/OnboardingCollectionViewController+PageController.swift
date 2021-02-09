@@ -18,6 +18,7 @@ extension OnboardingCollectionViewController {
                                            size: .init(width: 0, height: 50))
     }
     
+    /// setup bindings on views buttons
     func setupOnboardingViewTapBindings() {
         onboardinPageControllerView.previousButton.rx.tap.bind { [weak self] in
             self?.handlePrev()

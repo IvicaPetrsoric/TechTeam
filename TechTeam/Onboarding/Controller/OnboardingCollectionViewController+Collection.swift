@@ -17,6 +17,7 @@ extension OnboardingCollectionViewController: UICollectionViewDelegateFlowLayout
         collectionView.showsHorizontalScrollIndicator = false
     }
     
+    /// detect scrolling and updates page controller view
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let x = targetContentOffset.pointee.x
         let index = Int(x / view.frame.width)
