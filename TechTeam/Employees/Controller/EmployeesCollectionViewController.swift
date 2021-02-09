@@ -39,9 +39,10 @@ class EmployeesCollectionViewController: UICollectionViewController {
         registerCell()
         setupProgressIndicatorView()
         setupRefreshControl()
-        
-        employeeListViewModel.fetchData()
         setupBindings()
+        
+        // trigger fetch
+        handlePullToRefresh()
    }
     
     private func setupProgressIndicatorView() {
