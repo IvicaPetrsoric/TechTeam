@@ -53,7 +53,7 @@ This screen will show after selecting one of the employees. The transition is st
 
 # Extra
 ## Multilanguage support 
-This application supports English for its base language and Croatian. The files for localization can be found inside supporting files, under the localization folder. After selecting localizable.strings, it will show the two supported files (English/Croatian). The files have key/values. which keys are used throughout the application inside NSLocalizedString. On the next images, some key/values are shown for localization. 
+This application supports English for its base language and Croatian. The files for localization can be found inside supporting files, under the localization folder. After selecting localizable.strings, it will show the two supported files (English/Croatian). The files have key/values. which keys are used throughout the application inside NSLocalizedString. On the next images, some key/values are shown for localization. For supporting localization of Employee detials it is required to add param at the ednpoint for sending which localization is required.
 
  <img src="images/multilanguage0.png" widht= 150 height = 300  hspace="0"/> <img src="images/multilanguage1.png" widht= 175 height = 125  hspace="0"/> 
  <img src="images/multilanguage2.png" widht= 175 height = 125  hspace="0"/> 
