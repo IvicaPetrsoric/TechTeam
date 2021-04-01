@@ -49,7 +49,7 @@ This screen will show after selecting one of the employees. The transition is st
 
  <img src="images/details00.png" widht= 150 height = 300  hspace="0"/> <img src="images/details1.png" widht= 150 height = 300  hspace="0"/> 
  <img src="images/details2.png" widht= 150 height = 300  hspace="0"/> <img src="images/details3.png" widht= 150 height = 300  hspace="0"/> 
- <img src="images/details0.png" widht= 150 height = 300  hspace="0"/>
+ <img src="images/details4.png" widht= 150 height = 300  hspace="0"/>
 
 # Extra
 ## Multilanguage support 
