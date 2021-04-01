@@ -8,5 +8,6 @@ target 'TechTeam' do
   # Pods for TechTeam
   pod 'RxSwift','~> 6.0' 
   pod 'RxCocoa','~> 6.0'
+  pod 'Alamofire', '~> 5.2'
 
 end
