@@ -2,7 +2,7 @@
 
 
 # TechTeam
-TechTeam is a simple iOS application for showing employees. The employees are fetched from Teltech API for technical task #2.
+TechTeam is a simple iOS application for showing a list of employees. The employees are fetched from personal API which is removed from repo.
 
 # Installation
 After cloning the project it is required to run pod install and run .xcworkspace.
@@ -16,6 +16,7 @@ After cloning the project it is required to run pod install and run .xcworkspace
 - Pods:
   - RxSwift (v6.0)
   - RxCocoa (v6.0)
+  - Alamofire (v5.2)
   
 # Screens
 The application screens:
