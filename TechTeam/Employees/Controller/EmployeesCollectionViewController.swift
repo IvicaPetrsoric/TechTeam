@@ -11,6 +11,8 @@ import RxCocoa
 
 class EmployeesCollectionViewController: UICollectionViewController {
     
+    weak var coordinator: EmployeesCoordinator?
+    
     private(set) var employeeListViewModel = EmployeeListViewModel([])
     private let refreshControl = UIRefreshControl()
 

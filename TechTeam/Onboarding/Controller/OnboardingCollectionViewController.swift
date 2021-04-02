@@ -11,6 +11,8 @@ import RxSwift
 
 final class OnboardingCollectionViewController: UICollectionViewController {
     
+    weak var coordinator: OnboardingCoordinator?
+    
     private(set) var onboardingPageListViewModel = OnboardingPageListViewModel([])
         
     private(set) lazy var onboardinPageControllerView =

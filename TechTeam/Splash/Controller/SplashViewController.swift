@@ -9,6 +9,8 @@ import UIKit
 import RxSwift
 
 class SplashViewController: UIViewController {
+    
+    weak var coordinator: SplashCoordinator?
 
     private lazy var splashView = SplashView()
     
@@ -52,8 +54,7 @@ class SplashViewController: UIViewController {
     }
 
     @objc private func startTransition() {
-        let viewController = OnboardingCollectionViewController(pagesData: OnboardingPage.allPages)
-        navigationController?.pushViewController(viewController, animated: true)
+        coordinator?.parentCoordinator?.navigateToOnboardingViewController()
     }
 
 }

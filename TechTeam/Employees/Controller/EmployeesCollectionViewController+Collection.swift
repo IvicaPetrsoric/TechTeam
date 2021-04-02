@@ -36,8 +36,9 @@ extension EmployeesCollectionViewController: UICollectionViewDelegateFlowLayout 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.item
         let viewModel = employeeListViewModel.getEmployeeAt(index)
-        let hostingViewController = EmployeeDetailsViewHostingController(viewModel: viewModel)
-        present(hostingViewController, animated: true)
+        coordinator?.parentCoordinator?.navigateToEmployeesDetailsViewController(viewModel: viewModel)
+//        let hostingViewController = EmployeeDetailsViewHostingController(viewModel: viewModel)
+//        present(hostingViewController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

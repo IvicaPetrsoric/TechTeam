@@ -46,11 +46,7 @@ extension OnboardingCollectionViewController {
     private func handleExplore() {
         AnalyticsManager.shared.trackEvent(FeatureOneEvents.buttonClick,
                                           params:["extraKey": "extraValue"])
-        
-        let viewController = EmployeesCollectionViewController()
-        let navController = CustomNavigationController(rootViewController: viewController)
-        navController.modalPresentationStyle = .fullScreen
-        present(navController, animated: true)
+        coordinator?.parentCoordinator?.navigateToEmployeesViewController()        
     }
     
     func handleUpdatePageController(at index: Int, aniamteCollection: Bool) {
