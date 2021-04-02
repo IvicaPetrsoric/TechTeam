@@ -2,7 +2,8 @@
 
 
 # TechTeam
-TechTeam is a simple iOS application for showing a list of employees. The employees are fetched from personal API which is removed from repo.
+TechTeam is a simple iOS application for showing a list of employees. 
+Main features are ussage of MVVVM/RxSwift with combination of UIKit and SwiftUI. 
 
 # Installation
 After cloning the project it is required to run pod install and run .xcworkspace.
