@@ -30,7 +30,7 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
     }
     
     func navigateToSplashViewController() {
-//        childDidFinish(childCoordinators.first)
+        childDidFinish(childCoordinators.first)
         
         let child = SplashCoordinator(navigationController: navigationController)
         child.parentCoordinator = self
@@ -39,7 +39,7 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
     }
     
     func navigateToOnboardingViewController() {
-//        childDidFinish(childCoordinators.first)
+        childDidFinish(childCoordinators.first)
 
         let child = OnboardingCoordinator(navigationController: navigationController)
         child.parentCoordinator = self
@@ -48,9 +48,9 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
     }
     
     func navigateToEmployeesViewController() {
-//        childDidFinish(childCoordinators.first)
+        childDidFinish(childCoordinators.first)
 
-        let child = EmployeesCoordinator(navigationController: CustomNavigationController())
+        let child = EmployeesCoordinator(navigationController: navigationController)
         child.parentCoordinator = self
         childCoordinators.append(child)
         child.start()

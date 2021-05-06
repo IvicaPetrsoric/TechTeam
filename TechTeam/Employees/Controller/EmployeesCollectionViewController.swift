@@ -34,6 +34,8 @@ class EmployeesCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.setHidesBackButton(true, animated: true)
+        navigationController?.navigationBar.isHidden = false
         navigationItem.title = NSLocalizedString("EmlpoyeesNagiationTitle", comment: "")
         collectionView.backgroundColor = .backgroundColor
         
@@ -44,8 +46,8 @@ class EmployeesCollectionViewController: UICollectionViewController {
         setupBindings()
         
         // trigger fetch
-        handlePullToRefresh()
-   }
+        handleFetchEmployeesData()
+    }
     
     private func setupProgressIndicatorView() {
         view.addSubview(progressIndicatorView)
@@ -64,9 +66,13 @@ class EmployeesCollectionViewController: UICollectionViewController {
         refreshControl.endRefreshing()
       
         if employeeListViewModel.reloadDataAvailable {
-            progressIndicatorView.animate(show: true)
-            employeeListViewModel.fetchData()
+            handleFetchEmployeesData()
         }
+    }
+    
+    private func handleFetchEmployeesData() {
+        progressIndicatorView.animate(show: true)
+        employeeListViewModel.fetchData()
     }
     
     /// binds to VM, and subscribes when to show aler dialog because error  or reload collection view 

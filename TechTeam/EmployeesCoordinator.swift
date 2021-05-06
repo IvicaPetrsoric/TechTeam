@@ -22,18 +22,20 @@ class EmployeesCoordinator: Coordinator {
         self.navigationController2 = navigationController
     }
     
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        
+        self.navigationController2 = CustomNavigationController()
+    }
+    
     func start() {
         let viewController = EmployeesCollectionViewController()
         let navController = CustomNavigationController(rootViewController: viewController)
-        navController.modalPresentationStyle = .fullScreen
+//        navController.modalPresentationStyle = .fullScreen
         viewController.coordinator = self
-//        navigationController2.pushViewController(viewController, animated: true)
-//        return
-        if let keyWindow = UIApplication.shared.keyWindow {
-            keyWindow.rootViewController?.present(navController, animated: true)
-        }
         
-//        navigationController.viewControllers.first?.present(navController, animated: true)
+        
+        navigationController.pushViewController(viewController, animated: true)
     }
     
 }
