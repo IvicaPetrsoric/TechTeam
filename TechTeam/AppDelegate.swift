@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window?.makeKeyAndVisible()
 //        window?.rootViewController = UINavigationController(rootViewController: SplashViewController())
         
-        let navController = UINavigationController()
+        let navController = CustomNavigationController()
         coordinator = MainCoordinator(navigationController: navController)
         coordinator?.start()
         

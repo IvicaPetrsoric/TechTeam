@@ -24,11 +24,6 @@ class EmployeeDetailsCoordinator: Coordinator {
     func start(viewModel: EmployeeViewModel) {
         let hostingViewController = EmployeeDetailsViewHostingController(viewModel: viewModel)
         navigationController.present(hostingViewController, animated: true)
-        return
-        if let keyWindow = UIApplication.shared.keyWindow {
-            keyWindow.rootViewController?.present(hostingViewController, animated: true)
-        }
-
     }
     
 }

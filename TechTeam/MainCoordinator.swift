@@ -39,8 +39,6 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
     }
     
     func navigateToOnboardingViewController() {
-        childDidFinish(childCoordinators.first)
-
         let child = OnboardingCoordinator(navigationController: navigationController)
         child.parentCoordinator = self
         childCoordinators.append(child)
@@ -48,8 +46,6 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
     }
     
     func navigateToEmployeesViewController() {
-        childDidFinish(childCoordinators.first)
-
         let child = EmployeesCoordinator(navigationController: navigationController)
         child.parentCoordinator = self
         childCoordinators.append(child)
@@ -57,8 +53,6 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
     }
     
     func navigateToEmployeesDetailsViewController(viewModel: EmployeeViewModel) {
-//        childDidFinish(childCoordinators.first)
-
         let child = EmployeeDetailsCoordinator(navigationController: navigationController)
         child.parentCoordinator = self
         childCoordinators.append(child)
@@ -74,17 +68,22 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
         }
     }
     
-    // automatically see when back button is pressed, used to remove chilc coordinator
+    // automatically see when back button is pressed or new vc added,
+    // used to remove chilc coordinator
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         guard let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else { return }
-
+        
         // adding another
-        if navigationController.viewControllers.contains(fromViewController) {
-            return
+//        if navigationController.viewControllers.contains(fromViewController) {
+//            return
+//        }
+        
+        if let splashViewController = fromViewController as? SplashViewController {
+            childDidFinish(splashViewController.coordinator)
         }
         
-//        if let splashViewController = fromViewController as? SplashViewController {
-//            childDidFinish(splashViewController.coordinator)
-//        }
+        if let onboardingViewController = fromViewController as? OnboardingCollectionViewController {
+            childDidFinish(onboardingViewController.coordinator)
+        }
     }
 }
