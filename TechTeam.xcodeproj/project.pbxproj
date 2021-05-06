@@ -171,6 +171,7 @@
 				6BC7513025D1F1A40040F6EE /* View */,
 				6BC7514025D2019B0040F6EE /* ViewModel */,
 				6BC7514225D201A90040F6EE /* Controller */,
+				6BA68B25264471A700565930 /* Coordinator */,
 			);
 			path = Employees;
 			sourceTree = "<group>";
@@ -181,6 +182,7 @@
 				6BC7515925D223C00040F6EE /* View */,
 				6BC7515A25D223C50040F6EE /* ViewModel */,
 				6BC7515825D223B10040F6EE /* Controller */,
+				6BA68B26264471BC00565930 /* Coordinator */,
 			);
 			path = EmployeeDetails;
 			sourceTree = "<group>";
@@ -234,6 +236,38 @@
 				6BC7511525D1E9A40040F6EE /* OnboardingCollectionViewController+PageController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		6BA68B232644715C00565930 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				6B6BF71D2616239D00B309CF /* SplashCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		6BA68B242644718300565930 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				6B6BF7212616278400B309CF /* OnboardingCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		6BA68B25264471A700565930 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				6B6BF72526162ABD00B309CF /* EmployeesCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		6BA68B26264471BC00565930 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				6B6BF7292617169000B309CF /* EmployeeDetailsCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		6BC7511925D1EB0C0040F6EE /* CustomNavigationController */ = {
@@ -380,10 +414,6 @@
 				6BE6695725CB36FB009BEF52 /* Info.plist */,
 				6BE6694925CB36F9009BEF52 /* AppDelegate.swift */,
 				6B6BF7192616231D00B309CF /* MainCoordinator.swift */,
-				6B6BF71D2616239D00B309CF /* SplashCoordinator.swift */,
-				6B6BF7212616278400B309CF /* OnboardingCoordinator.swift */,
-				6B6BF72526162ABD00B309CF /* EmployeesCoordinator.swift */,
-				6B6BF7292617169000B309CF /* EmployeeDetailsCoordinator.swift */,
 				6BC7514A25D21FE20040F6EE /* Service */,
 				6BE6699A25CD48A4009BEF52 /* Splash */,
 				6BE6699D25CD493F009BEF52 /* Onboarding */,
@@ -437,6 +467,7 @@
 			children = (
 				6B41C0F325D1DE47002CB503 /* View */,
 				6B41C0F225D1DE41002CB503 /* Controller */,
+				6BA68B232644715C00565930 /* Coordinator */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -448,6 +479,7 @@
 				6B41C0F625D1DED0002CB503 /* View */,
 				6B41C0F525D1DEAA002CB503 /* ViewModel */,
 				6B41C0F725D1DED8002CB503 /* Controller */,
+				6BA68B242644718300565930 /* Coordinator */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
