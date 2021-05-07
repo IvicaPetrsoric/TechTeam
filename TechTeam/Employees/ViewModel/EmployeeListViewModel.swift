@@ -31,6 +31,28 @@ class EmployeeListViewModel {
     /// fetch data and trigger subscribers for provided data/error
     func fetchData() {
         isLoadingData = true
+        
+        if let url =  URL(string: APIManager.getResource2(type: .getBaseDescription)) {
+            let resource = Resource2<[Employee]>(url: url)
+            
+            URLRequest.load(resource: resource)
+//                .retry(2)
+                .observe(on: MainScheduler.instance)
+                .subscribe(onNext: { response in
+                    print(response)
+                    
+                    
+//                    self.noticeView.animateView(show: false)
+//                    let photos = response.photos.photo
+//                    self.photoListViewModel?.append(photos)
+//                    self.collectionView.reloadData()
+//                    self.isPageRefreshing = false
+                }, onError: { (error) in
+                    print("Tu --- ", error.localizedDescription)
+//                    self.noticeView.animateView(show: true)
+                }).disposed(by: disposeBag)
+        }
+
             
         APIManager.requestData(endpointType: .getBaseDescription, decodeType: [Employee].self) { [weak self] (result) in
             self?.isLoadingData = false

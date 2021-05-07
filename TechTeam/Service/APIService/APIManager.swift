@@ -54,6 +54,17 @@ class APIManager {
         }
     }
     
+    static func getResource2(type: EndpointType, imageName: String = "") -> String{
+        switch type {
+
+        case .getBaseDescription:
+            return "\(APIManager.baseUrl)/api/getEmployeesData"
+
+        case .getImage:
+            return "\(APIManager.baseUrl)/resource/\(imageName).jpg"
+        }
+    }
+    
     /// fetch data from specific endpoint, if error return error enum
     static func requestData<T: Decodable>(endpointType: EndpointType, decodeType: T.Type,
                                           completion: @escaping (ApiResult<T>) -> Void) {
@@ -63,7 +74,7 @@ class APIManager {
         guard let url = URL(string: resource.url) else {
             return completion(ApiResult.failure(.invalidURL))
         }
-        
+               
         AF.request(url, method: .get)
             .validate()
             .responseData { response in
