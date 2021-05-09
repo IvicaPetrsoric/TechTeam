@@ -12,7 +12,7 @@ After cloning the project it is required to run pod install and run .xcworkspace
 - min iOS 13
 - Swift 5.3 
 - Xcode 12.3
-- MVVM+RxSwift
+- MVVM-C+RxSwift
 - UIKit/SwiftUI
 - Pods:
   - RxSwift (v6.0)
