@@ -3,7 +3,7 @@
 
 # TechTeam
 TechTeam is a simple iOS application for showing a list of employees. 
-The main features are the usage of MVVVM/RxSwift with a combination of UIKit and SwiftUI. 
+The main features are the usage of MVVVM-C+RxSwift with a combination of UIKit and SwiftUI. 
 
 # Installation
 After cloning the project it is required to run pod install and run .xcworkspace.
