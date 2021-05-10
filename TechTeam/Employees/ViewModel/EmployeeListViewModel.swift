@@ -34,7 +34,7 @@ class EmployeeListViewModel {
         
         if let url =  URL(string: APIManager.getResource2(type: .getBaseDescription)) {
             let resource = Resource2<[Employee]>(url: url)
-            
+            print(resource.url)
             URLRequest.load(resource: resource)
 //                .retry(2)
                 .observe(on: MainScheduler.instance)
@@ -73,6 +73,23 @@ class EmployeeListViewModel {
             }
         }
     }
+    
+    func simpleGetUrlRequest()
+        {
+        if let url =  URL(string: APIManager.getResource2(type: .getBaseDescription)) {
+
+        let resource = Resource2<[Employee]>(url: url)
+
+            let url = resource.url
+
+            let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+                guard let data = data else { return }
+                print("The response is : ",String(data: data, encoding: .utf8)!)
+                //print(NSString(data: data, encoding: String.Encoding.utf8.rawValue) as Any)
+            }
+            task.resume()
+        }
+        }
 
     /// get number of sections
     func numberOfItemsInSection() -> Int {

@@ -21,7 +21,7 @@ extension URLRequest {
                 var request = URLRequest(url: url)
                 request.method = .get
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                try request.validate()
+                try! request.validate()
                 return URLSession.shared.rx.data(request: request)
             }.map { data -> T in
                 return try JSONDecoder().decode(T.self, from: data)

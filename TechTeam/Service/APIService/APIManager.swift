@@ -58,7 +58,8 @@ class APIManager {
         switch type {
 
         case .getBaseDescription:
-            return "\(APIManager.baseUrl)/api/getEmployeesData"
+            return "https://www.cleanappcode.com"
+//            return "\(APIManager.baseUrl)/api/getEmployeesData"
 
         case .getImage:
             return "\(APIManager.baseUrl)/resource/\(imageName).jpg"
