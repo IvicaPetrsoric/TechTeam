@@ -20,29 +20,44 @@ struct EmployeeDetailsFrontCard: View {
 
     var body: some View {
          VStack {
-            HStack(alignment: .top) {
-                Image(uiImage: self.imageDownloader.downloadedData)
-                    .resizable()
-                    .frame(width: 75, height: 75)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.white, lineWidth: 1))
-
-                Spacer()
-                
-                VStack(alignment: .trailing) {
-                    Text(employeeViewModel.departmentValue)
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 18))
-                        .fontWeight(.bold)
-                    Text(employeeViewModel.nameSurnameValue)
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 18))
-                        .fontWeight(.regular)
-                }
-            }
-            
+            getTopCardPart()
             Spacer()
+            getMidCardPart()
+            Spacer()
+            getBottomCardPart()
+        }
+        .frame(width: 300, height: 200)
+        .padding()
+        .background(LinearGradient(gradient: Gradient(colors: [Color(.primaryColor), Color(.activeColor)]),
+                                   startPoint: .topLeading, endPoint: .bottomTrailing))
+        .cornerRadius(16)
+    }
+    
+    private func getTopCardPart() -> some View {
+        return HStack(alignment: .top) {
+            Image(uiImage: self.imageDownloader.downloadedData)
+                .resizable()
+                .frame(width: 75, height: 75)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.white, lineWidth: 1))
 
+            Spacer()
+            
+            VStack(alignment: .trailing) {
+                Text(employeeViewModel.departmentValue)
+                    .foregroundColor(Color.white)
+                    .font(.system(size: 18))
+                    .fontWeight(.bold)
+                Text(employeeViewModel.nameSurnameValue)
+                    .foregroundColor(Color.white)
+                    .font(.system(size: 18))
+                    .fontWeight(.regular)
+            }
+        }
+    }
+    
+    private func getMidCardPart() -> some View {
+        return VStack {
             HStack {
                 Rectangle()
                     .frame(maxWidth: .infinity, maxHeight: 2)
@@ -64,41 +79,36 @@ struct EmployeeDetailsFrontCard: View {
                         .foregroundColor(Color.white)
                 }
             }
+        }
+    }
+    
+    private func getBottomCardPart() -> some View {
+        return HStack {
+            VStack(alignment: .leading) {
+                Text(NSLocalizedString("EmployeeDetailsTitlo", comment: ""))
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.gray)
+
+                Text(employeeViewModel.titleValue)
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
+            }
 
             Spacer()
 
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(NSLocalizedString("EmployeeDetailsTitlo", comment: ""))
-                        .font(.caption)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.gray)
-
-                    Text(employeeViewModel.titleValue)
-                        .font(.caption)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.white)
-                }
-
-                Spacer()
-
-                VStack(alignment: .trailing) {
-                    Text(NSLocalizedString("EmployeeDetailsAgency", comment: ""))
-                        .font(.caption)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.gray)
-                    Text(employeeViewModel.agencyValue)
-                        .font(.caption)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.white)
-                }
+            VStack(alignment: .trailing) {
+                Text(NSLocalizedString("EmployeeDetailsAgency", comment: ""))
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.gray)
+                Text(employeeViewModel.agencyValue)
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
             }
         }
-        .frame(width: 300, height: 200)
-        .padding()
-        .background(LinearGradient(gradient: Gradient(colors: [Color(.primaryColor), Color(.activeColor)]),
-                                   startPoint: .topLeading, endPoint: .bottomTrailing))
-        .cornerRadius(16)
     }
 }
 

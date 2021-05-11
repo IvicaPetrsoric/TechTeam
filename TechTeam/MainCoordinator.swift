@@ -26,7 +26,7 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
     
     func start() {
         navigationController.delegate = self
-        navigateToEmployeesViewController()
+        navigateToSplashViewController()
     }
     
     func navigateToSplashViewController() {

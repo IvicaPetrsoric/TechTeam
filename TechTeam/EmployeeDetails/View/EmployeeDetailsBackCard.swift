@@ -15,33 +15,9 @@ struct EmployeeDetailsBackCard: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            
-            HStack(alignment: .top) {
-                Spacer()
-
-                VStack(alignment: .leading) {
-                    Text(NSLocalizedString("EmployeeDetailsDescription", comment: ""))
-                        .foregroundColor(Color.gray)
-                        .font(.system(size: 32))
-                        .fontWeight(.bold)
-                        .rotation3DEffect(.degrees(180),axis: (x: 0.0, y: 1.0, z: 0.0))
-                }
-            }
-            
+            getTitle()
             Spacer()
-            
-            ScrollView (showsIndicators: false) {
-                Text(employeeViewModel.descriptionValue)
-                    .rotation3DEffect(.degrees(180), axis: (x: 0.0, y: 1.0, z: 0.0))
-                    .foregroundColor(Color.white)
-                    .font(.system(size: 16))
-                    .offset(y: slideInTextSate ? 0 : 500)
-                    .animation(.interpolatingSpring(mass: 1.1, stiffness: 7, damping: 50, initialVelocity: 4))
-                    .onAppear {
-                        slideInTextSate.toggle()
-                    }
-            }
-
+            getDescription()
             Spacer()
         }
         .frame(width: 300, height: 200)
@@ -49,6 +25,34 @@ struct EmployeeDetailsBackCard: View {
         .background(LinearGradient(gradient: Gradient(colors: [Color(.activeColor), Color(.primaryColor)]),
                                    startPoint: .topLeading, endPoint: .bottomTrailing))
         .cornerRadius(12)
+    }
+    
+    private func getTitle() -> some View {
+        return HStack(alignment: .top) {
+            Spacer()
+
+            VStack(alignment: .leading) {
+                Text(NSLocalizedString("EmployeeDetailsDescription", comment: ""))
+                    .foregroundColor(Color.gray)
+                    .font(.system(size: 32))
+                    .fontWeight(.bold)
+                    .rotation3DEffect(.degrees(180),axis: (x: 0.0, y: 1.0, z: 0.0))
+            }
+        }
+    }
+    
+    private func getDescription() -> some View {
+        return ScrollView (showsIndicators: false) {
+            Text(employeeViewModel.descriptionValue)
+                .rotation3DEffect(.degrees(180), axis: (x: 0.0, y: 1.0, z: 0.0))
+                .foregroundColor(Color.white)
+                .font(.system(size: 16))
+                .offset(y: slideInTextSate ? 0 : 500)
+                .animation(.interpolatingSpring(mass: 1.1, stiffness: 7, damping: 50, initialVelocity: 4))
+                .onAppear {
+                    slideInTextSate.toggle()
+                }
+        }
     }
     
 }

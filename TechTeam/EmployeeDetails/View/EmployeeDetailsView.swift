@@ -20,44 +20,49 @@ struct EmployeeDetailsView: View {
     
     var body: some View {
         ZStack {
+            getBackground()
             
-            Color.black
-                .edgesIgnoringSafeArea(.all)
-                .opacity(slideInCardState ? 0.7 : 0)
-                .animation(.default)
-                .onTapGesture {
-                    slideInCardState.toggle()
-                    removeView()
-                }
-
             VStack  {
                 Spacer()
-                EmployeeDetialsCard {
-                    VStack {
-                        Group {
-                            if flipped {
-                                EmployeeDetailsBackCard(employeeViewModel: employeeViewModel)
-                            } else {
-                                EmployeeDetailsFrontCard(employeeViewModel: employeeViewModel)
-                            }
-                        }
-                    }
-                    .rotation3DEffect(.degrees(degrees), axis: (x: 0.0, y: 1.0, z: 0.0))
-                    .opacity(slideInCardState ? 1 : 0)
-                    .offset(y: slideInCardState ? 0 : -700)
-                    .animation(.interpolatingSpring(mass: 1.1, stiffness: 7, damping: 50, initialVelocity: 4))
-                    .onAppear {
-                        startAnimationWithDelay()
-                    }
-                }.onTapGesture {
-                    withAnimation {
-                        degrees += 180
-                        flipped.toggle()
+                getEmployeesDetailCard()
+                Spacer()
+            }
+        }
+    }
+    
+    private func getBackground() -> some View {
+        return Color.black
+            .edgesIgnoringSafeArea(.all)
+            .opacity(slideInCardState ? 0.7 : 0)
+            .animation(.default)
+            .onTapGesture {
+                slideInCardState.toggle()
+                removeView()
+            }
+    }
+    
+    private func getEmployeesDetailCard() -> some View {
+        return EmployeeDetialsCard {
+            VStack {
+                Group {
+                    if flipped {
+                        EmployeeDetailsBackCard(employeeViewModel: employeeViewModel)
+                    } else {
+                        EmployeeDetailsFrontCard(employeeViewModel: employeeViewModel)
                     }
                 }
-                
-                Spacer()
-                
+            }
+            .rotation3DEffect(.degrees(degrees), axis: (x: 0.0, y: 1.0, z: 0.0))
+            .opacity(slideInCardState ? 1 : 0)
+            .offset(y: slideInCardState ? 0 : -700)
+            .animation(.interpolatingSpring(mass: 1.1, stiffness: 7, damping: 50, initialVelocity: 4))
+            .onAppear {
+                startAnimationWithDelay()
+            }
+        }.onTapGesture {
+            withAnimation {
+                degrees += 180
+                flipped.toggle()
             }
         }
     }
