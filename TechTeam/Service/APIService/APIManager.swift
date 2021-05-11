@@ -5,18 +5,17 @@
 //  Created by Ivica Petrsoric on 09/02/2021.
 //
 
-import Foundation
 import UIKit
 import Alamofire
+import RxSwift
+import RxCocoa
 
-struct Resource {
-    let url: String
+struct Resource<T: Decodable> {
+    let url: URL
 }
 
 class APIManager {
-    
-    static let baseUrl = "https://www.cleanappcode.com/testing/teach_team"
-    
+        
     // return resutl
     enum ApiResult<T> {
         case success(T)
@@ -41,83 +40,25 @@ class APIManager {
         case serverError
         case serverUnavailable
     }
-
-    /// prepare rosurce for specific endpoint
-    static private func getResource(type: EndpointType, imageName: String = "") -> Resource{
-        switch type {
-
-        case .getBaseDescription:
-            return Resource(url: "\(APIManager.baseUrl)/api/getEmployeesData")
-
-        case .getImage:
-            return Resource(url: "\(APIManager.baseUrl)/resource/\(imageName).jpg")
-        }
-    }
     
-    static func getResource2(type: EndpointType, imageName: String = "") -> String{
+    static let baseUrl = "https://www.cleanappcode.com/testing/teach_team"
+    
+    static func getResource(type: EndpointType, imageName: String = "") -> String {
         switch type {
 
         case .getBaseDescription:
-            return "https://www.cleanappcode.com"
-//            return "\(APIManager.baseUrl)/api/getEmployeesData"
+            return "\(APIManager.baseUrl)/api/getEmployeesData/"
 
         case .getImage:
             return "\(APIManager.baseUrl)/resource/\(imageName).jpg"
         }
     }
     
-    /// fetch data from specific endpoint, if error return error enum
-    static func requestData<T: Decodable>(endpointType: EndpointType, decodeType: T.Type,
-                                          completion: @escaping (ApiResult<T>) -> Void) {
-        let resource = APIManager.getResource(type: endpointType)
-        print("URL \(resource.url)")
-
-        guard let url = URL(string: resource.url) else {
-            return completion(ApiResult.failure(.invalidURL))
-        }
-               
-        AF.request(url, method: .get)
-            .validate()
-            .responseData { response in
-                switch response.result {
-                case .success(let data):
-                    do {
-                        if let responseCode = response.response?.statusCode {
-                            let responseJson = try JSONDecoder().decode(T.self, from: data)
-                            print("responseCode : \(responseCode)")
-
-                            switch responseCode {
-                                case 200:
-                                    completion(ApiResult.success(responseJson))
-                                case 400...499:
-                                    completion(ApiResult.failure(.authorizationError))
-                                case 500...599:
-                                    completion(ApiResult.failure(.serverError))
-                                default:
-                                    completion(ApiResult.failure(.unknownError))
-                                    break
-                            }
-                        } else {
-                            completion(ApiResult.failure(.unknownError))
-                            print("Error fetch status code nil")
-                        }
-                    }
-                    catch let parseJSONError {
-                        completion(ApiResult.failure(.unknownError))
-                        print("error on parsing request to JSON : \(parseJSONError)")
-                    }
-                case .failure(let error):
-                    print(error)
-                    completion(ApiResult.failure(.connectionError))
-                }
-            }
-    }
-
     /// load image from endpoint and save it inside shared cache
     static func loadImage(endpointType: EndpointType, imageName: String, completiong: @escaping((UIImage?) -> Void)) {
         let resource = APIManager.getResource(type: endpointType, imageName: imageName)
 
-        guard let imageURL = URL(string: resource.url) else {
+        guard let imageURL = URL(string: resource) else {
             completiong(nil)
             return
         }
@@ -135,12 +76,11 @@ class APIManager {
                 .responseData { response in
                     switch response.result {
                         case .success(let data):
-                            if let urlResponse = response.response,
-                            urlResponse.statusCode < 300,
+                            if let urlResponse = response.response, urlResponse.statusCode < 300,
                                 let image = UIImage(data: data) {
                                 let cachedData = CachedURLResponse(response: urlResponse, data: data)
                                 cache.storeCachedResponse(cachedData, for: request)
-                                
+
                                 DispatchQueue.main.async {
                                     completiong(image)
                                 }
@@ -158,3 +98,27 @@ class APIManager {
     
 }
 
+extension URLRequest {
+    
+    static func loadJSON<T>(resource: Resource<T>) -> Observable<APIManager.ApiResult<T>> {
+        return Observable.just(resource.url)
+            .flatMap { url -> Observable<(response: HTTPURLResponse, data: Data)> in
+                var request = URLRequest(url: url)
+                request.method = .get
+                request.setValue("TechTeam", forHTTPHeaderField:"User-Agent")
+                return URLSession.shared.rx.response(request: request)
+            }.map { (reponse, data) -> APIManager.ApiResult<T> in
+                switch reponse.statusCode {
+                    case 200...300:
+                        return APIManager.ApiResult.success(try JSONDecoder().decode(T.self, from: data))
+                    case 400...499:
+                        return APIManager.ApiResult.failure(.authorizationError)
+                    case 500...599:
+                        return APIManager.ApiResult.failure(.serverError)
+                    default:
+                        return APIManager.ApiResult.failure(.authorizationError)
+                }
+            }
+    }
+
+}
