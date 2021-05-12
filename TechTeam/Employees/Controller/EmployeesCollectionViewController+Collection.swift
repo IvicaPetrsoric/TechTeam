@@ -30,7 +30,20 @@ extension EmployeesCollectionViewController: UICollectionViewDelegateFlowLayout 
             .drive(cell.avatarImageView.rx.image)
             .disposed(by: disposeBag)
         
+        // initiate paggination
+        handlePagination(at: index)
+
+        
         return cell
+    }
+    
+    private func handlePagination(at index: Int) {
+        if index == employeeListViewModel.numberOfItemsInSection() - 1 && employeeListViewModel.paginateAvailable() {
+            /// delayed for simulation purpose, to show footer
+            delay(1) {
+                self.employeeListViewModel.fetchData()
+            }
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
