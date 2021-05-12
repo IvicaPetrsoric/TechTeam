@@ -24,7 +24,7 @@ After cloning the project it is required to run pod install and run .xcworkspace
 - show usage mixing UIKit and SwiftUI
 - UI build with code (usage of personal lib for AutoLayout)
 - Networking layer for fetching JSON data done with a generic method in combination with RxSwift
-- Networking layer for fetching images data done with Alamorife in the combination of native cashing technique
+- Networking layer for fetching images data done with Alamorife in combination of native cashing technique
 - showcase of pagination
 - implemented custom event tracker
 - multilanguage support
