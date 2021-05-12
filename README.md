@@ -26,7 +26,7 @@ After cloning the project it is required to run pod install and run .xcworkspace
 - Networking layer for fetching JSON data done with a generic method in combination with RxSwift
 - Networking layer for fetching images data done with Alamorife in combination of native cashing technique
 - showcase of pagination
-- implemented custom event tracker
+- implemented custom service for event tracking
 - multilanguage support
 - covered simple Unit tests
   
