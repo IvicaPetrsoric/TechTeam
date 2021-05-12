@@ -18,6 +18,17 @@ After cloning the project it is required to run pod install and run .xcworkspace
   - RxSwift (v6.0)
   - RxCocoa (v6.0)
   - Alamofire (v5.2)
+
+# Covered tasks:
+- implemented MVVM-C in combination with RxSwift
+- show usage mixing UIKit and SwiftUI
+- UI build with code (usage of personal lib for AutoLayout)
+- Networking layer for fetching JSON data done with a generic method in combination with RxSwift
+- Networking layer for fetching images data done with Alamorife in the combination of native cashing technique
+- showcase of pagination
+- implemented custom event tracker
+- multilanguage support
+- covered simple Unit tests
   
 # Screens
 The application screens:
