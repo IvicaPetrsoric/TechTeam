@@ -19,6 +19,10 @@ class EmployeeListViewModel {
     private var employeesViewModel: [EmployeeViewModel]
     
     private var isLoadingData: Bool = false
+    private var isDonePaginating: Bool = false
+    
+    private var pageOffset: Int = 0
+    private let maxPageOffset: Int = 40
     
     var reloadDataAvailable: Bool {
         return numberOfItemsInSection() == 0 && !isLoadingData
@@ -31,7 +35,12 @@ class EmployeeListViewModel {
     /// fetch data and trigger subscribers for provided data/error
     func fetchData() {
         isLoadingData = true
-        
+
+        if paginationAtEndOfPage() {
+            isLoadingData = false
+            isDonePaginating = true
+        }
+                
         if let url =  URL(string: APIManager.getResource(type: .getBaseDescription)) {
             let resource = Resource<[Employee]>(url: url)
 
@@ -43,7 +52,7 @@ class EmployeeListViewModel {
                     switch data {
                     case .success(let returnModel) :
                         let employees = returnModel
-                            self.employeesViewModel = employees.compactMap(EmployeeViewModel.init)
+                            self.employeesViewModel += employees.compactMap(EmployeeViewModel.init)
                             self.finishedFetching.onNext(true)
                     case .failure(let failure):
                         switch failure {
@@ -58,6 +67,21 @@ class EmployeeListViewModel {
                 }
             ).disposed(by: disposeBag)
         }
+    }
+    
+    /// determinate if pagination is still avaliable or we hit the end of page
+    func paginationAtEndOfPage() -> Bool {
+        pageOffset = numberOfItemsInSection()
+        print(pageOffset)
+        return pageOffset >= maxPageOffset
+    }
+    
+    func paginateAvailable() -> Bool {
+        return !isLoadingData && !isDonePaginating
+    }
+    
+    func isPaginating() -> Bool {
+        return isDonePaginating
     }
     
     /// get number of sections

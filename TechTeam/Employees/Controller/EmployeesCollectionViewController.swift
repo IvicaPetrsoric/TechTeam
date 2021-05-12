@@ -18,6 +18,7 @@ class EmployeesCollectionViewController: UICollectionViewController {
 
     let cellId = "cellId"
     let headerCellId = "headerCellId"
+    let footerCellId = "footerCellId"
 
     let disposeBag = DisposeBag()
     let progressIndicatorView = PrgoressIndicator()
