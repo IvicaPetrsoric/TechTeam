@@ -53,9 +53,9 @@ After the splash transition finished, this screen will slide from the right to t
 ## Employees Screen
 After pressing the button on onboarding to explore the employee's list, another screen will slide in. The employees' screen uses custom transition and it will animate from the left to the right side of the screen. When the screen is focused, automatically will a fetch request start. If the data is not available because of poor internet an alert dialog will appear on the screen. Besides alert dialog, the collection will present a header cell that informs the user to activate pull down on the screen to hit again the fetch request. If everything goes well the screen will populate with employees. When scrolling to the bottom pagination event will trigger to fetch next X employees. During this event a footer cell will show. When pagination is done, the footer will hide until next pagination. To see more details of each employee, it is required to select one cell. After selecting a cell, automatically will be triggered the transition to the details screen.
 
- <img src="images/employee0.png" widht= 150 height = 300  hspace="0"/> <img src="images/employee3.png" widht= 150 height = 300  hspace="0"/> 
- <img src="images/employee1.png" widht= 150 height = 300  hspace="0"/> <img src="images/employee2.png" widht= 150 height = 300  hspace="0"/>
- <img src="images/employee4.png" widht= 150 height = 300  hspace="0"/> <img src="images/employee5.png" widht= 150 height = 300  hspace="0"/>
+ <img src="images/employee0.png" widht= 130 height = 260  hspace="0"/> <img src="images/employee3.png" widht= 130 height = 260  hspace="0"/> 
+ <img src="images/employee1.png" widht= 130 height = 260  hspace="0"/> <img src="images/employee2.png" widht= 130 height = 260  hspace="0"/>
+ <img src="images/employee4.png" widht= 130 height = 260  hspace="0"/> <img src="images/employee5.png" widht= 130 height = 260  hspace="0"/>
 
 ## Employee Details Screen
 This screen will show after selecting one of the employees. The transition is starting from top to bottom of the screen with a spring effect. After it settles down the user can read more about the employee with data presented on a card. To see more description about the employee, a click is required on the card. When tapping, a rotating animation will be triggered and the backside of the card will be shown. To remove the card from the screen it is required to tap outside of the card. The transition to the employee's screen will reverse the entering animation of the card.
